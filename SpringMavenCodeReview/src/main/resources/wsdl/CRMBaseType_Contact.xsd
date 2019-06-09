@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+    <!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+    <!--
+        edited with XMLSpy v2006 sp1 U (http://www.altova.com) by
+        y00239272 (EMBRACE)
+    -->
+<xs:schema xmlns="http://crm.huawei.com/basetype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://crm.huawei.com/basetype/"
+    elementFormDefault="qualified">
+    <xs:include schemaLocation="CRMBaseType_Address.xsd" />
+    <xs:complexType name="ContactList">
+        <xs:sequence>
+            <xs:element name="ContactInfo" type="ContactInfo"
+                maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContactInfo">
+        <xs:all>
+            <xs:element name="RelaSeq" type="RelaSeq"
+                minOccurs="0" />
+            <xs:element name="Relatype" type="Relatype"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>0 father
+                        1 mother
+                        2 husband or wife
+                        3 Second Contact
+                        99 other</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RelaInfoType" type="RelaInfoType"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>1 PIC information
+                        2 Customer Contact Information </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PicType" type="PicType"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>1 Customer
+                        2 carrier </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Language" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="string">
+                        <xs:maxLength value="10" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ActionType" type="ActionType">
+                <xs:annotation>
+                    <xs:documentation>1 Add
+                        2 Modify
+                        3 Detele</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CertificateType" type="CertificateType"
+                minOccurs="0" />
+            <xs:element name="CertificateNumber" type="CertificateNumber"
+                minOccurs="0" />
+            <xs:element name="Relapriority" type="RelaPriority"
+                minOccurs="0" />
+            <xs:element name="Relaname1" type="RelaName"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>relation name of the relation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relaname2" type="RelaName"
+                minOccurs="0" />
+            <xs:element name="Relaname3" type="RelaName"
+                minOccurs="0" />
+            <xs:element name="Relaname4" type="RelaName"
+                minOccurs="0" />
+            <xs:element name="ContactAddress" type="AddressInfo"
+                minOccurs="0" />
+            <xs:element name="Relaaddr1" type="RelaAddress"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>address of the relation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relaaddr2" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr3" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr4" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr5" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr6" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr7" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relaaddr8" type="RelaAddress"
+                minOccurs="0" />
+            <xs:element name="Relatel1" type="RelaTelephone"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Telephone of the relation
+                        MOBILE_PHONE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relatel2" type="RelaTelephone"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Salutation</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relatel3" type="RelaTelephone"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>OFFICE_PHONE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relatel4" type="RelaTelephone"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>HOME_PHONE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relaemail" type="RelaEmail"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Email of the relation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Relafax" type="RelaFax"
+                minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Fax of the relation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="Title" minOccurs="0" />
+            <xs:element name="ExtParamList" type="ExtParameterList"
+                minOccurs="0" />
+        </xs:all>
+    </xs:complexType>
+</xs:schema>

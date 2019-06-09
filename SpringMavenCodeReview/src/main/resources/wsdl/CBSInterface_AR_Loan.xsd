@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon"
+		schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<xs:annotation>
+		<xs:documentation>loan</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="LoanRequest">
+		<xs:sequence>
+			<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+			<xs:choice>
+				<xs:element name="LoanGrade" type="xs:integer"/>
+				<xs:element name="LoanAmount" type="xs:long"/>
+			</xs:choice>
+			<xs:element name="Remark" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LoanResult">
+		<xs:sequence>
+			<xs:element name="LoanAmount" type="xs:long"/>
+			<xs:element name="LoanBalanceAmount" type="xs:long"/>
+			<xs:element name="RepayAmount" type="xs:long"/>
+			<xs:element name="ETUGracePeriod" type="xs:integer"/>
+			<xs:element name="GracePeriod" type="xs:integer"/>
+			<xs:element name="LoanInterestAmt" type="xs:long" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

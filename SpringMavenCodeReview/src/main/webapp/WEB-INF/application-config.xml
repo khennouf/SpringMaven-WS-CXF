@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://cxf.apache.org/configuration/beans"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:soap="http://cxf.apache.org/bindings/soap" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://cxf.apache.org/configuration/beans http://cxf.apache.org/schemas/configuration/cxf-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+	<bean
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:city.properties</value>
+				<value>classpath:district.properties</value>
+				<value>classpath:province.properties</value>
+				<value>classpath:etat.properties</value>
+				<value>classpath:client.properties</value>
+				<value>classpath:timeout.properties</value>
+				<value>classpath:error.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<!-- The CXF Bus -->
+	<bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+	<bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+
+
+	<!-- ws huawei get customer information -->
+	<bean id="customerWS"
+		class="com.huawei.bss.soaif._interface.customerservice.CustomerServices"
+		factory-bean="customer" factory-method="create" />
+
+	<bean id="customer" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.huawei.bss.soaif._interface.customerservice.CustomerInterfaces" />
+		<property name="address" value="${customer.endpoint.url}" />
+		<property name="inInterceptors">
+			<list>
+				<ref bean="logInbound" />
+			</list>
+		</property>
+		<property name="outInterceptors">
+			<list>
+				<bean class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+				<ref bean="logOutbound" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ws huawei get subscriber information -->
+	<bean id="subscriberWS" class="com.huawei.crm.service.SubscriberServices"
+		factory-bean="subscriber" factory-method="create" />
+
+	<bean id="subscriber" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="com.huawei.crm.service.SubscriberInterfaces" />
+		<property name="address" value="${subscriber.endpoint.url}" />
+		<property name="inInterceptors">
+			<list>
+				<ref bean="logInbound" />
+			</list>
+		</property>
+		<property name="outInterceptors">
+			<list>
+				<bean class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+				<ref bean="logOutbound" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ws huawei get query invoice,payment,recharge -->
+	<bean id="cbsWS"
+		class="com.huawei.bme.cbsinterface.arservices.ArServices_Service"
+		factory-bean="cbs" factory-method="create" />
+
+	<bean id="cbs" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.huawei.bme.cbsinterface.arservices.ArServices" />
+		<property name="address" value="${cbs.endpoint.url}" />
+		<property name="inInterceptors">
+			<list>
+				<ref bean="logInbound" />
+			</list>
+		</property>
+		<property name="outInterceptors">
+			<list>
+				<bean class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+				<ref bean="logOutbound" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ws huawei get balance and free -->
+	<bean id="accountWS"
+		class="com.huawei.bss.soaif._interface.accountservice.AccountServices"
+		factory-bean="account" factory-method="create" />
+
+	<bean id="account" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.huawei.bss.soaif._interface.accountservice.AccountInterfaces" />
+		<property name="address" value="${account.endpoint.url}" />
+		<property name="inInterceptors">
+			<list>
+				<ref bean="logInbound" />
+			</list>
+		</property>
+		<property name="outInterceptors">
+			<list>
+				<bean class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+				<ref bean="logOutbound" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="rechargePaiement"
+		class="dz.algerietelecom.webservice.service.impl.RechargePaiementServiceImpl" />
+	<jaxws:endpoint id="RechargePaiement" implementor="#rechargePaiement"
+		address="/RechargePaiementService">
+
+		<!-- Uncomment only if using WS-SecurityPolicy -->
+		<jaxws:properties>
+			<entry key="ws-security.callback-handler" value-ref="myPasswordCallback" />
+		</jaxws:properties>
+
+		<!-- Uncomment only if using standard WSS4J interceptors -->
+		<jaxws:inInterceptors>
+			<bean class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+				<constructor-arg>
+					<map>
+						<entry key="action" value="UsernameToken" />
+						<entry key="passwordType" value="PasswordText" />
+						<entry key="passwordCallbackRef" value-ref="myPasswordCallback" />
+					</map>
+				</constructor-arg>
+			</bean>
+		</jaxws:inInterceptors>
+
+		<jaxws:outInterceptors>
+			<bean class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+				<constructor-arg>
+					<map>
+						<entry key="action" value="UsernameToken" />
+						<entry key="user" value="PAIEMENT_RECHARGE" />
+						<entry key="passwordType" value="PasswordDigest" />
+						<entry>
+							<key>
+								<value>passwordCallbackRef</value>
+							</key>
+							<ref bean="ReponsepasswordCallback" />
+						</entry>
+					</map>
+				</constructor-arg>
+			</bean>
+
+		</jaxws:outInterceptors>
+
+	</jaxws:endpoint>
+
+
+	<bean id="myPasswordCallback"
+		class="dz.algerietelecom.webservice.service.ServerPasswordCallback" />
+
+	<bean id="ReponsepasswordCallback"
+		class="dz.algerietelecom.webservice.service.ResponseClientPasswordCallback" />
+
+
+	<context:component-scan base-package="dz.algerietelecom.webservice.dao" />
+
+	<!-- This allow for dispatching requests to Controllers -->
+
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/UsersDB" />
+	</bean>
+
+	<bean id="rechargeDao" class="dz.algerietelecom.webservice.dao.RechargeDAOImpl">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="factureDao" class="dz.algerietelecom.webservice.dao.FactureDAOImpl">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+	</bean>
+
+
+</beans>

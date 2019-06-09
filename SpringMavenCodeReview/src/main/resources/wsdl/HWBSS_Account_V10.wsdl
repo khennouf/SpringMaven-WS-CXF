@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/AccountService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.huawei.com/bss/soaif/interface/common/" targetNamespace="http://www.huawei.com/bss/soaif/interface/AccountService/">
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.huawei.com/bss/soaif/interface/AccountService/" schemaLocation="HWBSS_Account_V10.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="CreateAccountRequestMessage">
+		<part name="CreateAcctReqMsg" element="ns:CreateAcctReqMsg"/>
+	</message>
+	<message name="CreateAccountResponseMessage">
+		<part name="CreateAcctRspMsg" element="ns:CreateAcctRspMsg"/>
+	</message>
+	<message name="ChangeAccountInformationRequestMessage">
+		<part name="ChangeAcctInfoReqMsg" element="ns:ChangeAcctInfoReqMsg"/>
+	</message>
+	<message name="ChangeAccountInformationResponseMessage">
+		<part name="ChangeAcctInfoRspMsg" element="ns:ChangeAcctInfoRspMsg"/>
+	</message>
+	<message name="ChangeBillMediumRequestMessage">
+		<part name="ChangeBillMediumReqMsg" element="ns:ChangeBillMediumReqMsg"/>
+	</message>
+	<message name="ChangeBillMediumResponseMessage">
+		<part name="ChangeBillMediumRspMsg" element="ns:ChangeBillMediumRspMsg"/>
+	</message>
+	<message name="QueryBillMediumRequestMessage">
+		<part name="QueryBillMediumReqMsg" element="ns:QueryBillMediumReqMsg"/>
+	</message>
+	<message name="QueryBillMediumResponseMessage">
+		<part name="QueryBillMediumRspMsg" element="ns:QueryBillMediumRspMsg"/>
+	</message>
+	<message name="QueryAccountInformationRequestMessage">
+		<part name="QueryAcctInfoReqMsg" element="ns:QueryAcctInfoReqMsg"/>
+	</message>
+	<message name="QueryAccountInformationResponseMessage">
+		<part name="QueryAcctInfoRspMsg" element="ns:QueryAcctInfoRspMsg"/>
+	</message>
+	<message name="QueryBalanceRequestMessage">
+		<part name="QueryBalanceReqMsg" element="ns:QueryBalanceReqMsg"/>
+	</message>
+	<message name="QueryBalanceResponseMessage">
+		<part name="QueryBalanceRspMsg" element="ns:QueryBalanceRspMsg"/>
+	</message>
+	<message name="QueryBalanceAndFreeUnitRequestMessage">
+		<part name="QueryBalanceAndFreeUnitReqMsg" element="ns:QueryBalanceAndFreeUnitReqMsg"/>
+	</message>
+	<message name="QueryBalanceAndFreeUnitResponseMessage">
+		<part name="QueryBalanceAndFreeUnitRspMsg" element="ns:QueryBalanceAndFreeUnitRspMsg"/>
+	</message>
+	<message name="ChangeBillCycleRequestMessage">
+		<part name="ChangeBillCycleReqMsg" element="ns:ChangeBillCycleReqMsg"/>
+	</message>
+	<message name="ChangeBillCycleResponseMessage">
+		<part name="ChangeBillCycleRspMsg" element="ns:ChangeBillCycleRspMsg"/>
+	</message>
+	<message name="ChangeAccountCreditLimitRequestMessage">
+		<part name="ChangeAccountCreditLimitReqMsg" element="ns:ChangeAccountCreditLimitReqMsg"/>
+	</message>
+	<message name="ChangeAccountCreditLimitResponseMessage">
+		<part name="ChangeAccountCreditLimitRspMsg" element="ns:ChangeAccountCreditLimitRspMsg"/>
+	</message>
+	<portType name="AccountInterfaces">
+		<operation name="CreateAccount">
+			<input message="ns:CreateAccountRequestMessage"/>
+			<output message="ns:CreateAccountResponseMessage"/>
+		</operation>
+		<operation name="ChangeAccountInformation">
+			<input message="ns:ChangeAccountInformationRequestMessage"/>
+			<output message="ns:ChangeAccountInformationResponseMessage"/>
+		</operation>
+		<operation name="ChangeBillMedium">
+			<input message="ns:ChangeBillMediumRequestMessage"/>
+			<output message="ns:ChangeBillMediumResponseMessage"/>
+		</operation>
+		<operation name="QueryBillMedium">
+			<input message="ns:QueryBillMediumRequestMessage"/>
+			<output message="ns:QueryBillMediumResponseMessage"/>
+		</operation>
+		<operation name="QueryAccountInformation">
+			<input message="ns:QueryAccountInformationRequestMessage"/>
+			<output message="ns:QueryAccountInformationResponseMessage"/>
+		</operation>
+		<operation name="QueryBalance">
+			<input message="ns:QueryBalanceRequestMessage"/>
+			<output message="ns:QueryBalanceResponseMessage"/>
+		</operation>
+		<operation name="QueryBalanceAndFreeUnit">
+			<input message="ns:QueryBalanceAndFreeUnitRequestMessage"/>
+			<output message="ns:QueryBalanceAndFreeUnitResponseMessage"/>
+		</operation>
+		<operation name="ChangeBillCycle">
+			<input message="ns:ChangeBillCycleRequestMessage"/>
+			<output message="ns:ChangeBillCycleResponseMessage"/>
+		</operation>
+		<operation name="ChangeAccountCreditLimit">
+			<input message="ns:ChangeAccountCreditLimitRequestMessage"/>
+			<output message="ns:ChangeAccountCreditLimitResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="AccountBinding" type="ns:AccountInterfaces">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="CreateAccount">
+			<soap:operation soapAction="CreateAccount" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAccountInformation">
+			<soap:operation soapAction="ChangeAccountInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeBillMedium">
+			<soap:operation soapAction="ChangeBillMedium" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBillMedium">
+			<soap:operation soapAction="QueryBillMedium" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAccountInformation">
+			<soap:operation soapAction="QueryAccountInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBalance">
+			<soap:operation soapAction="QueryBalance" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBalanceAndFreeUnit">
+			<soap:operation soapAction="QueryBalanceAndFreeUnit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeBillCycle">
+			<soap:operation soapAction="ChangeBillCycle" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAccountCreditLimit">
+			<soap:operation soapAction="ChangeAccountCreditLimit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="AccountBindingSoap12" type="ns:AccountInterfaces">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="CreateAccount">
+			<soap12:operation soapAction="CreateAccount" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAccountInformation">
+			<soap12:operation soapAction="ChangeAccountInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeBillMedium">
+			<soap12:operation soapAction="ChangeBillMedium" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBillMedium">
+			<soap12:operation soapAction="QueryBillMedium" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAccountInformation">
+			<soap12:operation soapAction="QueryAccountInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBalance">
+			<soap12:operation soapAction="QueryBalance" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBalanceAndFreeUnit">
+			<soap12:operation soapAction="QueryBalanceAndFreeUnit" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeBillCycle">
+			<soap12:operation soapAction="ChangeBillCycle" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAccountCreditLimit">
+			<soap12:operation soapAction="ChangeAccountCreditLimit" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="AccountServices">
+		<port name="AccountServicePort" binding="ns:AccountBinding">
+			<soap:address location="http://www.huawei.com/bss/HWBSSAccountService"/>
+		</port>
+		<port name="AccountServicePortSoap12" binding="ns:AccountBindingSoap12">
+			<soap12:address location="http://www.huawei.com/bss/HWBSSOrderService"/>
+		</port>
+	</service>
+</definitions>

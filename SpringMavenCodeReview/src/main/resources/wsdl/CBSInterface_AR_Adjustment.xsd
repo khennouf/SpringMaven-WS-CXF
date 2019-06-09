@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Adjustment-->
+	<xs:complexType name="AdjustmentRequest">
+		<xs:sequence>
+			<xs:element name="AdjustmentSerialNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdjustmentObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="arcommon:string20" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OpType" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>It is used to indicate the operation is adjustment or reset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdjustmentInfo" type="arcommon:BalanceAdjustment" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FreeUnitAdjustmentInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FreeUnitInstanceID" type="xs:long" minOccurs="0"/>
+						<xs:element name="FreeUnitType" type="xs:string" minOccurs="0"/>
+						<xs:element name="AdjustmentType" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>It indicates the adjustment is up or down</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="AdjustmentAmt" type="xs:long" minOccurs="0"/>
+						<xs:element name="EffectiveTime" type="xs:string" minOccurs="0"/>
+						<xs:element name="ExpireTime" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="InvoiceNo" type="xs:string" minOccurs="0" />
+						<xs:element name="InvoiceDetailID" type="xs:long" minOccurs="0"/>
+						<xs:element name="AdjustmentType">
+							<xs:simpleType>
+								<xs:restriction base="arcommon:string20">
+									<xs:length value="1"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="AdjustmentAmt" type="xs:long"/>
+						<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+						<xs:element name="BillingCycleID" type="xs:string" minOccurs="0"/>
+						<xs:element name="DueDate" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdjustmentReasonCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdjustmentResult">
+		<xs:sequence>
+			<xs:element name="AcctKey" type="xs:string"/>
+			<xs:element name="AdjustmentInfo" type="arcommon:BalanceChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FreeUnitAdjustmentInfo" type="arcommon:FreeUnitChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CreditAdjustmentInfo" type="arcommon:CreditChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

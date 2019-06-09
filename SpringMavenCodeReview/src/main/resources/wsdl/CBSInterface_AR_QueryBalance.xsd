@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Query balance -->
+	<xs:complexType name="QueryBalanceRequest">
+		<xs:sequence>
+			<xs:element name="QueryObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BalanceType" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryBalanceResult">
+		<xs:sequence>
+			<xs:element name="AcctList" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>如果按照用户查询，对于Hybrid的用户同时返回预付费帐户和后付费帐户</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AcctKey" type="xs:string"/>
+						<xs:element name="BalanceResult" type="arcommon:AcctBalance" maxOccurs="unbounded"/>
+						<xs:element name="OutStandingList" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>帐户下所有欠费未缴记录，按照帐期分组。 历史欠费不包含当前帐期未出账费用。</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BillCycleID" type="xs:string"/>
+									<xs:element name="BillCycleBeginTime" type="xs:string"/>
+									<xs:element name="BillCycleEndTime" type="xs:string"/>
+									<xs:element name="DueDate" type="xs:string"/>
+									<xs:element name="OutStandingDetail" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OutStandingAmount" type="xs:long"/>
+												<xs:element name="CurrencyID" type="xs:integer"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AccountCredit" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CreditLimitType" type="xs:string" minOccurs="0"/>
+									<xs:element name="CreditLimitTypeName" type="xs:string" minOccurs="0"/>
+									<xs:element name="TotalCreditAmount" type="xs:long"/>
+									<xs:element name="TotalUsageAmount" type="xs:long"/>
+									<xs:element name="TotalRemainAmount" type="xs:long"/>
+									<xs:element name="CurrencyID" type="xs:integer"/>
+									<xs:element name="CreditAmountInfo" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="CreditInstID" type="xs:long"/>
+												<xs:element name="LimitClass" type="xs:string">
+													<xs:annotation>
+														<xs:documentation>I: 初始信用度
+T: 临时信用度</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Amount" type="xs:long"/>
+												<xs:element name="EffectiveTime" type="xs:string"/>
+												<xs:element name="ExpireTime" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

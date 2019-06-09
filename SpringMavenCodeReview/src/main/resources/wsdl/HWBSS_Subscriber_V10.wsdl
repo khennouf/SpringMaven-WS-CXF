@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/SubscriberService/" xmlns:ns1="http://www.huawei.com/bss/soaif/interface/common/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.huawei.com/bss/soaif/interface/SubscriberService/">
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.huawei.com/bss/soaif/interface/SubscriberService/" schemaLocation="HWBSS_Subscriber_V10.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="AuthenticateSubscriberRequestMessage">
+		<part element="ns:AuthenticateSubReqMsg" name="AuthenticateSubReqMsg"/>
+	</message>
+	<message name="AuthenticateSubscriberResponseMessage">
+		<part element="ns:AuthenticateSubRspMsg" name="AuthenticateSubRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberPasswordRequestMessage">
+		<part element="ns:ChangeSubPasswordReqMsg" name="ChangeSubPasswordReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberPasswordResponseMessage">
+		<part element="ns:ChangeSubPasswordRspMsg" name="ChangeSubPasswordRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberInformationRequestMessage">
+		<part element="ns:ChangeSubInfoReqMsg" name="ChangeSubInfoReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberInformationResponseMessage">
+		<part element="ns:ChangeSubInfoRspMsg" name="ChangeSubInfoRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberStatusRequestMessage">
+		<part element="ns:ChangeSubStatusReqMsg" name="ChangeSubStatusReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberStatusResponseMessage">
+		<part element="ns:ChangeSubStatusRspMsg" name="ChangeSubStatusRspMsg"/>
+	</message>
+	<message name="QuerySubscriberInformationRequestMessage">
+		<part element="ns:QuerySubInfoReqMsg" name="QuerySubInfoReqMsg"/>
+	</message>
+	<message name="QuerySubscriberInformationResponseMessage">
+		<part element="ns:QuerySubInfoRspMsg" name="QuerySubInfoRspMsg"/>
+	</message>
+	<message name="QuerySubscriberStatusRequestMessage">
+		<part element="ns:QuerySubStatusReqMsg" name="QuerySubStatusReqMsg"/>
+	</message>
+	<message name="QuerySubscriberStatusResponseMessage">
+		<part element="ns:QuerySubStatusRspMsg" name="QuerySubStatusRspMsg"/>
+	</message>
+	<message name="QueryEntityIdsRequestMessage">
+		<part element="ns:QueryEntityIdsReqMsg" name="QueryEntityIdsReqMsg"/>
+	</message>
+	<message name="QueryEntityIdsResponseMessage">
+		<part element="ns:QueryEntityIdsRspMsg" name="QueryEntityIdsRspMsg"/>
+	</message>
+	<message name="QuerySubscriberLifeCycleRequestMessage">
+		<part element="ns:QuerySubLifeCycleReqMsg" name="QuerySubLifeCycleReqMsg"/>
+	</message>
+	<message name="QuerySubscriberLifeCycleResponseMessage">
+		<part element="ns:QuerySubLifeCycleRspMsg" name="QuerySubLifeCycleRspMsg"/>
+	</message>
+	<message name="ActivateSubscriberRequestMessage">
+		<part element="ns:ActivateSubReqMsg" name="ActivateSubReqMsg"/>
+	</message>
+	<message name="ActivateSubscriberResponseMessage">
+		<part element="ns:ActivateSubRspMsg" name="ActivateSubRspMsg"/>
+	</message>
+	<message name="DeactivateSubscriberRequestMessage">
+		<part element="ns:DeactivateSubReqMsg" name="DeactivateSubReqMsg"/>
+	</message>
+	<message name="DeactivateSubscriberResponseMessage">
+		<part element="ns:DeactivateSubRspMsg" name="DeactivateSubRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberMSISDNRequestMessage">
+		<part element="ns:ChangeSubMSISDNReqMsg" name="ChangeSubMSISDNReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberMSISDNResponseMessage">
+		<part element="ns:ChangeSubMSISDNRspMsg" name="ChangeSubMSISDNRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberSIMRequestMessage">
+		<part element="ns:ChangeSubSIMReqMsg" name="ChangeSubSIMReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberSIMResponseMessage">
+		<part element="ns:ChangeSubSIMRspMsg" name="ChangeSubSIMRspMsg"/>
+	</message>
+	<message name="ChangeRechargeBlacklistRequestMessage">
+		<part element="ns:ChangeRechargeBlacklistReqMsg" name="ChangeRechargeBlacklistReqMsg"/>
+	</message>
+	<message name="ChangeRechargeBlacklistResponseMessage">
+		<part element="ns:ChangeRechargeBlacklistRspMsg" name="ChangeRechargeBlacklistRspMsg"/>
+	</message>
+	<message name="ReactivateSubscriberRequestMessage">
+		<part element="ns:ReactivateSubReqMsg" name="ReactivateSubReqMsg"/>
+	</message>
+	<message name="ReactivateSubscriberResponseMessage">
+		<part element="ns:ReactivateSubRspMsg" name="ReactivateSubRspMsg"/>
+	</message>
+	<message name="PreDeactivateSubscriberRequestMessage">
+		<part element="ns:PreDeactivateSubReqMsg" name="PreDeactivateSubReqMsg"/>
+	</message>
+	<message name="PreDeactivateSubscriberResponseMessage">
+		<part element="ns:PreDeactivateSubRspMsg" name="PreDeactivateSubRspMsg"/>
+	</message>
+	<message name="ReportLostRequestMessage">
+		<part element="ns:ReportLostReqMsg" name="ReportLostReqMsg"/>
+	</message>
+	<message name="ReportLostResponseMessage">
+		<part element="ns:ReportLostRspMsg" name="ReportLostRspMsg"/>
+	</message>
+	<message name="CancelLostRequestMessage">
+		<part element="ns:CancelLostReqMsg" name="CancelLostReqMsg"/>
+	</message>
+	<message name="CancelLostResponseMessage">
+		<part element="ns:CancelLostRspMsg" name="CancelLostRspMsg"/>
+	</message>
+	<message name="ChangePaymentRelationRequestMessage">
+		<part element="ns:ChangePaymentRelationReqMsg" name="ChangePaymentRelationReqMsg"/>
+	</message>
+	<message name="ChangePaymentRelationResponseMessage">
+		<part element="ns:ChangePaymentRelationRspMsg" name="ChangePaymentRelationRspMsg"/>
+	</message>
+	<message name="ChangeConsumptionLimitRequestMessage">
+		<part element="ns:ChangeConsumptionLimitReqMsg" name="ChangeConsumptionLimitReqMsg"/>
+	</message>
+	<message name="ChangeConsumptionLimitResponseMessage">
+		<part element="ns:ChangeConsumptionLimitRspMsg" name="ChangeConsumptionLimitRspMsg"/>
+	</message>
+	<message name="ChangePromotionRequestMessage">
+		<part element="ns:ChangePromotionReqMsg" name="ChangePromotionReqMsg"/>
+	</message>
+	<message name="ChangePromotionResponseMessage">
+		<part element="ns:ChangePromotionRspMsg" name="ChangePromotionRspMsg"/>
+	</message>
+	<message name="AssignAccountToSubscriberRequestMessage">
+		<part element="ns:AssignAcctToSubReqMsg" name="AssignAcctToSubReqMsg"/>
+	</message>
+	<message name="AssignAccountToSubscriberResponseMessage">
+		<part element="ns:AssignAcctToSubRspMsg" name="AssignAcctToSubRspMsg"/>
+	</message>
+	<message name="ChangePrepaidToPostpaidRequestMessage">
+		<part element="ns:ChangePrepaidToPostpaidReqMsg" name="ChangePrepaidToPostpaidReqMsg"/>
+	</message>
+	<message name="ChangePrepaidToPostpaidResponseMessage">
+		<part element="ns:ChangePrepaidToPostpaidRspMsg" name="ChangePrepaidToPostpaidRspMsg"/>
+	</message>
+	<message name="ChangeSubscriberOwnerRequestMessage">
+		<part element="ns:ChangeSubOwnerReqMsg" name="ChangeSubOwnerReqMsg"/>
+	</message>
+	<message name="ChangeSubscriberOwnerResponseMessage">
+		<part element="ns:ChangeSubOwnerRspMsg" name="ChangeSubOwnerRspMsg"/>
+	</message>
+	<message name="SupplementCustomerInformationRequestMessage">
+		<part element="ns:SupplementCustInfoReqMsg" name="SupplementCustInfoReqMsg"/>
+	</message>
+	<message name="SupplementCustomerInformationResponseMessage">
+		<part element="ns:SupplementCustInfoRspMsg" name="SupplementCustInfoRspMsg"/>
+	</message>
+	<portType name="SubscriberInterfaces">
+		<operation name="AuthenticateSubscriber">
+			<input message="ns:AuthenticateSubscriberRequestMessage"/>
+			<output message="ns:AuthenticateSubscriberResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberPassword">
+			<input message="ns:ChangeSubscriberPasswordRequestMessage"/>
+			<output message="ns:ChangeSubscriberPasswordResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberInformation">
+			<input message="ns:ChangeSubscriberInformationRequestMessage"/>
+			<output message="ns:ChangeSubscriberInformationResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberStatus">
+			<input message="ns:ChangeSubscriberStatusRequestMessage"/>
+			<output message="ns:ChangeSubscriberStatusResponseMessage"/>
+		</operation>
+		<operation name="QuerySubscriberInformation">
+			<input message="ns:QuerySubscriberInformationRequestMessage"/>
+			<output message="ns:QuerySubscriberInformationResponseMessage"/>
+		</operation>
+		<operation name="QuerySubscriberStatus">
+			<input message="ns:QuerySubscriberStatusRequestMessage"/>
+			<output message="ns:QuerySubscriberStatusResponseMessage"/>
+		</operation>
+		<operation name="QueryEntityIds">
+			<input message="ns:QueryEntityIdsRequestMessage"/>
+			<output message="ns:QueryEntityIdsResponseMessage"/>
+		</operation>
+		<operation name="QuerySubscriberLifeCycle">
+			<input message="ns:QuerySubscriberLifeCycleRequestMessage"/>
+			<output message="ns:QuerySubscriberLifeCycleResponseMessage"/>
+		</operation>
+		<operation name="ActivateSubscriber">
+			<input message="ns:ActivateSubscriberRequestMessage"/>
+			<output message="ns:ActivateSubscriberResponseMessage"/>
+		</operation>
+		<operation name="DeactivateSubscriber">
+			<input message="ns:DeactivateSubscriberRequestMessage"/>
+			<output message="ns:DeactivateSubscriberResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberMSISDN">
+			<input message="ns:ChangeSubscriberMSISDNRequestMessage"/>
+			<output message="ns:ChangeSubscriberMSISDNResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberSIM">
+			<input message="ns:ChangeSubscriberSIMRequestMessage"/>
+			<output message="ns:ChangeSubscriberSIMResponseMessage"/>
+		</operation>
+		<operation name="ChangeRechargeBlacklist">
+			<input message="ns:ChangeRechargeBlacklistRequestMessage"/>
+			<output message="ns:ChangeRechargeBlacklistResponseMessage"/>
+		</operation>
+		<operation name="ReactivateSubscriber">
+			<input message="ns:ReactivateSubscriberRequestMessage"/>
+			<output message="ns:ReactivateSubscriberResponseMessage"/>
+		</operation>
+		<operation name="PreDeactivateSubscriber">
+			<input message="ns:PreDeactivateSubscriberRequestMessage"/>
+			<output message="ns:PreDeactivateSubscriberResponseMessage"/>
+		</operation>
+		<operation name="ReportLost">
+			<input message="ns:ReportLostRequestMessage"/>
+			<output message="ns:ReportLostResponseMessage"/>
+		</operation>
+		<operation name="CancelLost">
+			<input message="ns:CancelLostRequestMessage"/>
+			<output message="ns:CancelLostResponseMessage"/>
+		</operation>
+		<operation name="ChangePaymentRelation">
+			<input message="ns:ChangePaymentRelationRequestMessage"/>
+			<output message="ns:ChangePaymentRelationResponseMessage"/>
+		</operation>
+		<operation name="ChangeConsumptionLimit">
+			<input message="ns:ChangeConsumptionLimitRequestMessage"/>
+			<output message="ns:ChangeConsumptionLimitResponseMessage"/>
+		</operation>
+		<operation name="ChangePromotion">
+			<input message="ns:ChangePromotionRequestMessage"/>
+			<output message="ns:ChangePromotionResponseMessage"/>
+		</operation>
+		<operation name="AssignAccountToSubscriber">
+			<input message="ns:AssignAccountToSubscriberRequestMessage"/>
+			<output message="ns:AssignAccountToSubscriberResponseMessage"/>
+		</operation>
+		<operation name="ChangePrepaidToPostpaid">
+			<input message="ns:ChangePrepaidToPostpaidRequestMessage"/>
+			<output message="ns:ChangePrepaidToPostpaidResponseMessage"/>
+		</operation>
+		<operation name="ChangeSubscriberOwner">
+			<input message="ns:ChangeSubscriberOwnerRequestMessage"/>
+			<output message="ns:ChangeSubscriberOwnerResponseMessage"/>
+		</operation>
+		<operation name="SupplementCustomerInformation">
+			<input message="ns:SupplementCustomerInformationRequestMessage"/>
+			<output message="ns:SupplementCustomerInformationResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="SubscriberBinding" type="ns:SubscriberInterfaces">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="AuthenticateSubscriber">
+			<soap:operation soapAction="AuthenticateSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberPassword">
+			<soap:operation soapAction="ChangeSubscriberPassword" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberInformation">
+			<soap:operation soapAction="ChangeSubscriberInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberStatus">
+			<soap:operation soapAction="ChangeSubscriberStatus" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberInformation">
+			<soap:operation soapAction="QuerySubscriberInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberStatus">
+			<soap:operation soapAction="QuerySubscriberStatus" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryEntityIds">
+			<soap:operation soapAction="QueryEntityIds" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberLifeCycle">
+			<soap:operation soapAction="QuerySubscriberLifeCycle" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ActivateSubscriber">
+			<soap:operation soapAction="ActivateSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeactivateSubscriber">
+			<soap:operation soapAction="DeactivateSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberMSISDN">
+			<soap:operation soapAction="ChangeSubscriberMSISDN" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberSIM">
+			<soap:operation soapAction="ChangeSubscriberSIM" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeRechargeBlacklist">
+			<soap:operation soapAction="ChangeRechargeBlacklist" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReactivateSubscriber">
+			<soap:operation soapAction="ReactivateSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PreDeactivateSubscriber">
+			<soap:operation soapAction="PreDeactivateSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReportLost">
+			<soap:operation soapAction="ReportLost" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CancelLost">
+			<soap:operation soapAction="CancelLost" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePaymentRelation">
+			<soap:operation soapAction="ChangePaymentRelation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeConsumptionLimit">
+			<soap:operation soapAction="ChangeConsumptionLimit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePromotion">
+			<soap:operation soapAction="ChangePromotion" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AssignAccountToSubscriber">
+			<soap:operation soapAction="AssignAccountToSubscriber" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePrepaidToPostpaid">
+			<soap:operation soapAction="ChangePrepaidToPostpaid" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberOwner">
+			<soap:operation soapAction="ChangeSubscriberOwner" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SupplementCustomerInformation">
+			<soap:operation soapAction="SupplementCustomerInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="SubscriberBindingSoap12" type="ns:SubscriberInterfaces">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="AuthenticateSubscriber">
+			<soap12:operation soapAction="AuthenticateSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberPassword">
+			<soap12:operation soapAction="ChangeSubscriberPassword" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberInformation">
+			<soap12:operation soapAction="ChangeSubscriberInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberStatus">
+			<soap12:operation soapAction="ChangeSubscriberStatus" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberInformation">
+			<soap12:operation soapAction="QuerySubscriberInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberStatus">
+			<soap12:operation soapAction="QuerySubscriberStatus" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryEntityIds">
+			<soap12:operation soapAction="QueryEntityIds" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySubscriberLifeCycle">
+			<soap12:operation soapAction="QuerySubscriberLifeCycle" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ActivateSubscriber">
+			<soap12:operation soapAction="ActivateSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeactivateSubscriber">
+			<soap12:operation soapAction="DeactivateSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberMSISDN">
+			<soap12:operation soapAction="ChangeSubscriberMSISDN" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberSIM">
+			<soap12:operation soapAction="ChangeSubscriberSIM" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeRechargeBlacklist">
+			<soap12:operation soapAction="ChangeRechargeBlacklist" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReactivateSubscriber">
+			<soap12:operation soapAction="ReactivateSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PreDeactivateSubscriber">
+			<soap12:operation soapAction="PreDeactivateSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ReportLost">
+			<soap12:operation soapAction="ReportLost" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CancelLost">
+			<soap12:operation soapAction="CancelLost" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePaymentRelation">
+			<soap12:operation soapAction="ChangePaymentRelation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeConsumptionLimit">
+			<soap12:operation soapAction="ChangeConsumptionLimit" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePromotion">
+			<soap12:operation soapAction="ChangePromotion" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="AssignAccountToSubscriber">
+			<soap12:operation soapAction="AssignAccountToSubscriber" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangePrepaidToPostpaid">
+			<soap12:operation soapAction="ChangePrepaidToPostpaid" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeSubscriberOwner">
+			<soap12:operation soapAction="ChangeSubscriberOwner" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SupplementCustomerInformation">
+			<soap12:operation soapAction="SupplementCustomerInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SubscriberServices">
+		<port binding="ns:SubscriberBinding" name="SubscriberServicePort">
+			<soap:address location="http://www.huawei.com/bss/HWBSSSubscriberService"/>
+		</port>
+		<port binding="ns:SubscriberBindingSoap12" name="SubscriberServicePortSoap12">
+			<soap12:address location="http://www.huawei.com/bss/HWBSSSubscriberService"/>
+		</port>
+	</service>
+</definitions>

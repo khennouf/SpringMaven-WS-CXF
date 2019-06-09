@@ -1,0 +1,1385 @@
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.huawei.com/bss/soaif/interface/common/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/SubscriberService/" targetNamespace="http://www.huawei.com/bss/soaif/interface/SubscriberService/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.huawei.com/bss/soaif/interface/common/" schemaLocation="./HWBSS_CommonData_V10.xsd"/>
+	<xs:element name="AuthenticateSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The ID type can be "3:Subscriber ID" or "4:Servcie Number"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Password" type="common:Password">
+						<xs:annotation>
+							<xs:documentation>The subscriber's password.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AuthenticateSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubPasswordReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access mode can be "3: subscriber ID" or "4: service number".</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:sequence>
+						<xs:element name="OldPassword" type="common:Password"/>
+						<xs:element name="NewPassword" type="common:Password"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubPasswordRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Subscriber">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Language" type="common:Language" minOccurs="0"/>
+								<xs:element name="WrittenLanguage" type="common:Language" minOccurs="0"/>
+								<xs:element name="IMEI" type="common:IMEI" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>IMEI of a mobile phone which is purchased by a customer</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>List of extended parameters. </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubStatusReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OperateType">
+						<xs:annotation>
+							<xs:documentation>The operation type.
+1: Barring(Block one way)
+2: Unbarring
+3: Suspend(Block two way)
+4: Resume(Undo block two way)</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ReasonCode" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The reason of changing the subscriber status.
+1: Customer Request
+2: Operator Request
+</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubStatusRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="Subscriber" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SubId" type="common:SubId" minOccurs="0"/>
+							<xs:element name="PartnerId" type="common:PartnerId" minOccurs="0"/>
+							<xs:element name="BrandId" type="common:BrandId" minOccurs="0"/>
+							<xs:element name="SubType" type="common:SubType" minOccurs="0"/>
+							<xs:element name="ServiceNum" type="common:ServiceNum" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Subscriber's service number. e.g. MSISDN.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ICCID" type="common:ICCID" minOccurs="0"/>
+							<xs:element name="IMSI" type="common:IMSI" minOccurs="0"/>
+							<xs:element name="IMEI" type="common:IMEI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>IMEI of a mobile phone which is purchased by a customer</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Language" type="common:Language" minOccurs="0"/>
+							<xs:element name="WrittenLanguage" type="common:Language" minOccurs="0"/>
+							<xs:element name="NetworkType" type="common:NetworkType" minOccurs="0"/>
+							<xs:element name="SubStatus" type="common:SubStatus" minOccurs="0"/>
+							<xs:element name="EffectiveDate" type="common:DateTime" minOccurs="0"/>
+							<xs:element name="ExpireDate" type="common:DateTime" minOccurs="0"/>
+							<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>List of extended parameters. </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubStatusReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubStatusRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="SubStatus" type="common:SubStatus" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryEntityIdsReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="ServiceNum" type="common:ServiceNum"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryEntityIdsRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="EntityId" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The type can be ,"2: Account ID", "3: Subscriber ID", "1:Customer ID".</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="common:ObjectAccessInfo">
+								<xs:sequence>
+									<xs:element name="PaymentType" type="common:PaymentType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Only used for hybrid subscriber. because hybrid subscriber has two accounts one postpaid account one prepaid account.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubLifeCycleReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuerySubLifeCycleRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:sequence>
+					<xs:element name="CurrentStatusIndex" type="common:SubStatus">
+						<xs:annotation>
+							<xs:documentation>The subscriber current life cycle  status.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LifeCycleStatus" type="common:LifeCycleStatus" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>the valid date of subscriber's different status.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="IsBlacklistStatus">
+						<xs:annotation>
+							<xs:documentation>0: Subscriber in blacklist status.
+1: Subscriber not in blacklist status.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="FraudTimes">
+						<xs:annotation>
+							<xs:documentation>Recharge fault times.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ActivateSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ActivateSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReactivateSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReactivateSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PreDeactivateSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to pre-deactivate.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PreDeactivateSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeactivateSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to deactivate.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DeactivateSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubMSISDNReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to change the MSISDN.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="NewServiceNum" type="common:ServiceNum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>New primary service number to be assigned to a subscriber. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubMSISDNRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubSIMReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to change the SIM.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="OldICCID" type="common:ICCID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Old SIM card ICCID number</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NewICCID" type="common:ICCID">
+						<xs:annotation>
+							<xs:documentation>New SIM card ICCID number.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ReasonCode" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This parameter is reserved.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="6"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubSIMRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeRechargeBlacklistReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to remove form the recharge blacklist.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="OperateType">
+						<xs:annotation>
+							<xs:documentation>The operation type.
+0: Remove the Subscriber from the recharge blacklist.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeRechargeBlacklistRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReportLostReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to report lost.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ReasonCode" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This parameter is reserved.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="6"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ReportLostRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CancelLostReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to cancel lost.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ChangeSIMInfo" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The new SIM information when cancel lost.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="OldICCID" type="common:ICCID" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Old SIM card ICCID number</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="NewICCID" type="common:ICCID">
+									<xs:annotation>
+										<xs:documentation>New SIM card ICCID number.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CancelLostRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePaymentRelationReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AcctId" type="common:AcctId">
+					<xs:annotation>
+						<xs:documentation>The account ID  related to the subscriber.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PaymentRelation" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="common:PaymentRelation">
+								<xs:sequence>
+									<xs:element name="ActionType" type="common:ActionType"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePaymentRelationRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeConsumptionLimitReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Consumption" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:Consumption">
+									<xs:sequence>
+										<xs:element name="ActionType" type="common:ActionType"/>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeConsumptionLimitRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePromotionReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Promotion" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="PromotionId">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="PromotionCode" minOccurs="0">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="128"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="MgmNum" minOccurs="0">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="64"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="RewardItemId" minOccurs="0" maxOccurs="unbounded">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePromotionRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AssignAcctToSubReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want to assign the account.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="AcctInfo">
+						<xs:annotation>
+							<xs:documentation>The account assigned to the subscriber.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:choice>
+								<xs:element name="ExistingAcctId" type="common:AcctId">
+									<xs:annotation>
+										<xs:documentation>The existing account assigned to the subscriber.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Account">
+									<xs:annotation>
+										<xs:documentation>Create a new account to the subscriber.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="CustId" type="common:CustId">
+												<xs:annotation>
+													<xs:documentation>The customer ID of the account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AcctName" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="PaymentType" type="common:PaymentType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment type of an account.
+0:prepaid.
+1:postpaid.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+											<xs:element name="Name" type="common:Name" minOccurs="0"/>
+											<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+											<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Bill language.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Contact" type="common:Contact" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>The contact information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="BillMedium" type="common:BillMedium" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Bill medium information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Currency" type="common:Currency" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="InitialBalance" type="common:Amount" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Initial balance of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="CreditLimit" type="common:CreditLimit" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>The credit limit of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment method of an account.
+1: manual payment.
+2: automatic payment.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PaymentChannel" type="common:PaymentChannel" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AssignAcctToSubRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePrepaidToPostpaidReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The subscriber you want o change owner.
+The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PostpaidCust">
+						<xs:annotation>
+							<xs:documentation>The customer information need to be change.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CustId" type="common:CustId">
+									<xs:annotation>
+										<xs:documentation>The ID of the customer whom you want to change the information.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+								<xs:element name="Name" type="common:Name" minOccurs="0"/>
+								<xs:element name="Nationality" type="common:Nationality" nillable="true" minOccurs="0"/>
+								<xs:element name="Birthday" type="common:Date" minOccurs="0"/>
+								<xs:element name="Contact" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Contact">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Address">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PostpaidAcct">
+						<xs:annotation>
+							<xs:documentation>The postpaid account infromation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:choice>
+								<xs:element name="ExistingAcctId" type="common:AcctId">
+									<xs:annotation>
+										<xs:documentation>Assign a existing account to the subscriber.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Account">
+									<xs:annotation>
+										<xs:documentation>Create a new account to the postpaid subscriber.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="CustId" type="common:CustId">
+												<xs:annotation>
+													<xs:documentation>The customer ID of the account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AcctName" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="PaymentType" type="common:PaymentType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment type of an account.
+0:prepaid.
+1:postpaid.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+											<xs:element name="Name" type="common:Name" minOccurs="0"/>
+											<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+											<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Bill language.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Contact" type="common:Contact" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>The contact information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="BillMedium" type="common:BillMedium" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Bill medium information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Currency" type="common:Currency" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="InitialBalance" type="common:Amount" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Initial balance of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="CreditLimit" type="common:CreditLimit" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>The credit limit of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment method of an account.
+1: manual payment.
+2: automatic payment.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PaymentChannel" type="common:PaymentChannel" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Offering">
+						<xs:annotation>
+							<xs:documentation>The postpaid primary offering.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="OldPrimaryOffering" type="common:OfferingId" minOccurs="0"/>
+								<xs:element name="NewPrimaryOffering">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:OfferingInstance">
+												<xs:sequence>
+													<xs:element name="EffectiveMode" type="common:EffectiveMode">
+														<xs:annotation>
+															<xs:documentation>Offering effective time.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangePrepaidToPostpaidRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubOwnerReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="NewCustInfo">
+						<xs:complexType>
+							<xs:choice>
+								<xs:element name="ExistCustId" type="common:CustId"/>
+								<xs:element name="Customer">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="CustLevel" type="common:CustLevel" minOccurs="0"/>
+											<xs:element name="CustSegment" type="common:CustSegment" minOccurs="0"/>
+											<xs:element name="NoticeSuppress" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>reserved. 
+This parameter is reserved for  future use.</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="ChannelType">
+															<xs:annotation>
+																<xs:documentation>Notice channel type.
+"S": SMS notification.
+"M": EMAIL notification.
+"V": IVR notification.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="NoticeType">
+															<xs:annotation>
+																<xs:documentation>Notice type.
+All the SMS/EMAIL/IVR messages are classified to different groups (notice type). Customer can chose to suppress messages by group.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+														<xs:element name="SubNoticeType" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation>Notice sub type.
+
+All the SMS/EMAIL/IVR messages in groups (notice type) are classified to different sub-groups (SubNoticeType). Customer can chose to suppress messages by sub-groups.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+											<xs:element name="Name" type="common:Name" minOccurs="0"/>
+											<xs:element name="Nationality" type="common:Nationality" nillable="true" minOccurs="0"/>
+											<xs:element name="Certificate" type="common:Certificate" nillable="true" minOccurs="0"/>
+											<xs:element name="Birthday" type="common:Date" minOccurs="0"/>
+											<xs:element name="Contact" type="common:Contact" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="Status" type="common:CustStatus" minOccurs="0"/>
+											<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="NewAcctInfo">
+						<xs:complexType>
+							<xs:choice>
+								<xs:element name="ExistAcctId" type="common:AcctId"/>
+								<xs:element name="Account">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="AcctName" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="PaymentType" type="common:PaymentType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment type of an account.
+0:prepaid.
+1:postpaid.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+											<xs:element name="Name" type="common:Name" minOccurs="0"/>
+											<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+											<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Bill language.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Contact" type="common:Contact" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>The contact information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="BillMedium" type="common:BillMedium" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>Bill medium information.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="Currency" type="common:Currency" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Reserved.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="InitialBalance" type="common:Amount" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Initial balance of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="CreditLimit" type="common:CreditLimit" minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+													<xs:documentation>The credit limit of an account.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Payment method of an account.
+1: manual payment.
+2: automatic payment.</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="PaymentChannel" type="common:PaymentChannel" minOccurs="0" maxOccurs="unbounded"/>
+											<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="NewSubInfo">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Language" type="common:Language" minOccurs="0"/>
+								<xs:element name="WrittenLanguage" type="common:Language" minOccurs="0"/>
+								<xs:element name="IMEI" type="common:IMEI" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>IMEI of a mobile phone which is purchased by a customer</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>List of extended parameters. </xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PasswordInfo">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Password" type="common:Password">
+									<xs:annotation>
+										<xs:documentation>New password of subscriber.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="OldPassword" type="common:Password">
+									<xs:annotation>
+										<xs:documentation>Old password of subscriber.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeSubOwnerRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SupplementCustInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo">
+						<xs:annotation>
+							<xs:documentation>The access  information can be "3:subscriber ID" or "4: service number"</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:ObjectAccessInfo"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ExistingCust" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Chose a existing customer for the subscriber.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CustId" type="common:CustId">
+									<xs:annotation>
+										<xs:documentation>The customer ID of a existing customer.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="AcctId" type="common:AcctId">
+									<xs:annotation>
+										<xs:documentation>The account ID of a existing account.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Customer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Update customer information for the subscriber.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="CustId" type="common:CustId">
+									<xs:annotation>
+										<xs:documentation>The ID of the customer whom you want to change the information.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+								<xs:element name="Name" type="common:Name" minOccurs="0"/>
+								<xs:element name="Nationality" type="common:Nationality" nillable="true" minOccurs="0"/>
+								<xs:element name="Birthday" type="common:Date" minOccurs="0"/>
+								<xs:element name="Contact" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Contact">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Address">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Account" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Update account infromation for the subscriber.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="AcctId" type="common:AcctId"/>
+								<xs:element name="AcctName" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>This parameter is reserved.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Bill language.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+								<xs:element name="Name" type="common:Name" minOccurs="0"/>
+								<xs:element name="Contact" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>The contact information.
+This parameter is reserved.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Contact">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:Address">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+								<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Account payment method.
+1: manual payment.
+2: auto pay.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="PaymentChannel" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>the payment channel of account. only valid when AccPayMethod='2'.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:PaymentChannel">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="BillMedium" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>1)when ActionType=1, BillMediumId is not necessary.
+2)when ActionType=2, all parameters are necessary.
+3)when ActionType=3, only BillMediumId is necessary.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="common:BillMedium">
+												<xs:sequence>
+													<xs:element name="ActionType" type="common:ActionType"/>
+												</xs:sequence>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="IfActivateSub" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>If activate subscriber after supplement the customer information.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SupplementCustInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

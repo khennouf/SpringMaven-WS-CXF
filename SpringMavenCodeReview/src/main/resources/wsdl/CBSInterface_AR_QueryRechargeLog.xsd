@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Query Recharge Log-->
+	<xs:complexType name="QueryRechargeLogRequest">
+		<xs:sequence>
+			<xs:element name="CustAccessCode" type="arcommon:CustAccessCode" minOccurs="0"/>
+			<xs:element name="QueryObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RechargeChannelIDs" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RechargeChannelID" type="arcommon:string64" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalRowNum" type="xs:long"/>
+			<xs:element name="BeginRowNum" type="xs:long"/>
+			<xs:element name="FetchRowNum" type="xs:long"/>
+			<xs:element name="StartTime" type="xs:string"/>
+			<xs:element name="EndTime" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryRechargeLogResult">
+		<xs:sequence>
+			<xs:element name="RechargeInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TradeTime" type="xs:string"/>
+						<xs:element name="AcctKey" type="xs:string"/>
+						<xs:element name="SubKey" type="xs:string" minOccurs="0"/>
+						<xs:element name="PrimaryIdentity" type="xs:string" minOccurs="0"/>
+						<xs:element name="TransID" type="xs:long"/>
+						<xs:element name="ExtTransID" type="xs:string" minOccurs="0"/>
+						<xs:element name="RechargeAmount" type="xs:long"/>
+						<xs:element name="CurrencyID" type="xs:integer"/>
+						<xs:element name="OriAmount" type="xs:long" minOccurs="0"/>
+						<xs:element name="OriCurrencyID" type="xs:integer" minOccurs="0"/>
+						<xs:element name="CurrencyRate" type="xs:float" minOccurs="0"/>
+						<xs:element name="RechargeTax" type="xs:long" minOccurs="0"/>
+						<xs:element name="RechargePenalty" type="xs:long" minOccurs="0"/>
+						<xs:element name="RechargeType" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>0: card Recharge
+1: cash Recharge</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ExtRechargeType" type="xs:string" minOccurs="0"/>
+						<xs:element name="CardInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CardPinNumber" type="xs:string" minOccurs="0"/>
+									<xs:element name="CardSequence" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BankInfo" type="arcommon:BankInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="RechargeChannelID" type="xs:string" minOccurs="0"/>
+						<xs:element name="RechargeReason" type="xs:string" minOccurs="0"/>
+						<xs:element name="OperID" type="xs:long" minOccurs="0"/>
+						<xs:element name="DeptID" type="xs:long" minOccurs="0"/>
+						<xs:element name="ResultCode" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>0: Success
+other:  failed</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReversalFlag" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>0: not reversal
+1: reversal</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReversalReason" type="xs:string" minOccurs="0"/>
+						<xs:element name="ReversalOpID" type="xs:long" minOccurs="0"/>
+						<xs:element name="ReversalDeptID" type="xs:long" minOccurs="0"/>
+						<xs:element name="ReversalTime" type="xs:string" minOccurs="0"/>
+						<xs:element name="LifeCycleChgInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OldLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="NewLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ChgValidity" type="xs:integer"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BalanceChgInfo" type="arcommon:BalanceChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="RechargeBonus" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FreeUnitItemList" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="FreeUnitID" type="xs:string"/>
+												<xs:element name="FreeUnitType" type="xs:string"/>
+												<xs:element name="FreeUnitTypeName" type="xs:string" minOccurs="0"/>
+												<xs:element name="MeasureUnit" type="xs:string"/>
+												<xs:element name="MeasureUnitName" type="xs:string" minOccurs="0"/>
+												<xs:element name="BonusAmt" type="xs:long" nillable="true"/>
+												<xs:element name="EffectiveTime" type="xs:string"/>
+												<xs:element name="ExpireTime" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="BalanceList" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="BalanceType" type="xs:string"/>
+												<xs:element name="BalanceID" type="xs:string" minOccurs="0"/>
+												<xs:element name="BalanceTypeName" type="xs:string"/>
+												<xs:element name="BonusAmt" type="xs:long"/>
+												<xs:element name="CurrencyID" type="xs:integer"/>
+												<xs:element name="EffectiveTime" type="xs:string"/>
+												<xs:element name="ExpireTime" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>It is reserved for future extension</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CreditChgInfo" type="arcommon:CreditChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalRowNum" type="xs:long"/>
+			<xs:element name="BeginRowNum" type="xs:long"/>
+			<xs:element name="FetchRowNum" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

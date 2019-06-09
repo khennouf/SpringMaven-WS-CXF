@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<xs:complexType name="RefundRequest">
+		<xs:sequence>
+			<xs:element name="RefundSerialNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="RefundObj">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RefundInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RefundType" type="xs:string"/>
+						<xs:element name="PaymentSerialNo" type="xs:string" minOccurs="0"/>
+						<xs:element name="DepositType" type="xs:string" minOccurs="0"/>
+						<xs:element name="Amount" type="xs:long" minOccurs="0"/>
+						<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+						<xs:element name="RefundReasonCode" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RefundChannel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PaymentMethod" type="xs:string"/>
+						<xs:element name="BankInfo" type="arcommon:BankInfo" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RefundResult">
+		<xs:sequence>
+			<xs:element name="RefundSerialNo" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Payment2AR</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="Payment2ARRequest">
+		<xs:sequence>
+			<xs:element name="Payment2ARSerialNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="PaymentObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="xs:string" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PaymentInfo" type="arcommon:FeeDetailValue" maxOccurs="unbounded"/>
+			<xs:element name="SalesTime" type="xs:string"/>
+			<xs:element name="InvoiceTime" type="xs:string"/>
+			<xs:element name="PaymentTime" type="xs:string"/>
+			<xs:element name="ChannelID" type="arcommon:string64" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Payment2ARRollBackRequest">
+		<xs:sequence>
+			<xs:element name="Payment2ARSerialNo" type="xs:string"/>
+			<xs:element name="PaymentObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="xs:string" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RollBackFeeValues" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ChargeSeq" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReasonCode" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

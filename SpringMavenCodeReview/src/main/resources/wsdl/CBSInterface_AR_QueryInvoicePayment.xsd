@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--query invoice payment -->
+	<xs:complexType name="QueryInvoicePaymentRequest">
+		<xs:sequence>
+			<xs:element name="InvoiceNo" type="xs:string"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="AcctAccessCode">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="arcommon:AcctAccessCode">
+								<xs:sequence>
+									<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TimePeriod">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="StartTime" type="xs:string"/>
+							<xs:element name="EndTime" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryInvoicePaymentResult">
+		<xs:sequence>
+			<xs:element name="InvoicePaymentInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PaymentTime" type="xs:string"/>
+						<xs:element name="PaymentAmount" type="xs:long"/>
+						<xs:element name="ApplyAmount" type="xs:long"/>
+						<xs:element name="CurrencyID" type="xs:integer"/>
+						<xs:element name="TransID" type="xs:string"/>
+						<xs:element name="TransType" type="xs:string" minOccurs="0"/>
+						<xs:element name="ExtPayType" type="xs:string" minOccurs="0"/>
+						<xs:element name="PaymentMethod" type="xs:string" minOccurs="0"/>
+						<xs:element name="CardInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CardPinNumber" type="xs:string" minOccurs="0"/>
+									<xs:element name="CardSequence" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BankInfo" type="arcommon:BankInfo" minOccurs="0"/>
+						<xs:element name="PayChannelID" type="xs:string" minOccurs="0"/>
+						<xs:element name="AccessMode" type="xs:string" minOccurs="0"/>
+						<xs:element name="Status" type="xs:string"/>
+						<xs:element name="OperID" type="xs:long" minOccurs="0"/>
+						<xs:element name="DeptID" type="xs:long" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

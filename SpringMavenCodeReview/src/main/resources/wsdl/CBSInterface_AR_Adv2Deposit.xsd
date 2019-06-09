@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Transfer Balance-->
+	<xs:complexType name="Adv2DepositRequest">
+		<xs:sequence>
+			<xs:element name="AccountAccessCode" type="arcommon:AcctAccessCode">
+				<xs:annotation>
+					<xs:documentation>Desposit request account access code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepositAmount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Reuest advanced payment amount to deposit. The same format and accuracy as database format. 注意，请送大单位过来</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--xs:element name="SrcBalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="DestBalanceType" type="xs:string" minOccurs="0"/-->
+			<xs:element name="DepositType" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Deposit Type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CurrencyID" type="xs:long" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Adv2DepositResult">
+		<xs:sequence>
+			<xs:element name="DepositAmount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Deposit amount after the process 处理成功之后的押金金额（仅针对请求的押金类型）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepositType" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Processed deposit amount</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CurrencyID" type="xs:long" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

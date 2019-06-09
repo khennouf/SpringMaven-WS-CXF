@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Williams (501) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Query last x months bill payment history-->
+	<xs:complexType name="QueryLastBillPaymentRequest">
+		<xs:sequence>
+			<xs:element name="AcctAccessCode">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="arcommon:AcctAccessCode">
+							<xs:sequence>
+								<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LastBillNumber" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If not input this value, default vaule is last bill. If this value is 3 means last 3 bill  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryLastBillPaymentResult">
+		<xs:sequence>
+			<xs:element name="PaymentResult" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>0: Not paid last bill  1: Paid last bill</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

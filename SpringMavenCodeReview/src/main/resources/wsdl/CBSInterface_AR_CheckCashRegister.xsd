@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--query invoice -->
+	<xs:complexType name="CheckCashRegisterRequest">
+		<xs:sequence>
+			<xs:element name="OperID" type="xs:long"/>
+			<xs:element name="TransactionList" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PaymentMethodID" type="xs:string"/>
+						<xs:element name="TransactionAmount" type="xs:long"/>
+						<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CurrencyID" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CheckCashRegisterResult">
+		<xs:sequence minOccurs="0">
+			<xs:element name="BatchNo" type="xs:long"/>
+			<xs:element name="OperID" type="xs:long"/>
+			<xs:element name="CurrencyID" type="xs:string" minOccurs="0"/>
+			<xs:element name="OverLimit" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>0: not over cashbox threshold; 1: over cashbox threshold</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

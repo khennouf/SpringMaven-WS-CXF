@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by y00239272 (EMBRACE) -->
+<xs:schema xmlns="http://crm.huawei.com/basetype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://crm.huawei.com/basetype/" elementFormDefault="qualified">
+	<xs:include schemaLocation="CRMBaseType.xsd"/>
+	<xs:complexType name="OfferingList">
+		<xs:sequence>
+			<xs:element name="OfferingInfo" type="OfferingInfo" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OfferingInfo">
+		<xs:all>
+			<xs:element name="ActionType" type="ActionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 Add
+2 Modify
+3 Delete
+4 UpGrade
+5 DownGrade
+6 Prolong</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OfferingId" type="OfferingKey"/>
+            <!-- add by z00293406 -->
+            <xs:element name="OfferingRefId" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="string">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ParentOfferingRefId" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="string">
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <!-- end by z00293406 -->
+			<xs:element name="BundleOfferId" type="OfferingId" minOccurs="0"/>
+			<xs:element name="IsThirdPartyOfferingId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="string">
+						<xs:maxLength value="1"/>
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="OldOfferingId" type="OfferingKey" minOccurs="0"/>
+			<xs:element name="OwnerType" type="OwnerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 Customer
+2 Subscriber
+3 Account</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EffectMode" type="EffectMode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>0:Immediate;
+1:Next bill cycle;
+2:Absolute date;
+3:X days later</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EffectValue" type="EffectValue" minOccurs="0"/>
+			<xs:element name="ExpireMode" type="ExpireMode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>0:Immediate;
+1:Bill cycle end;
+2:Absolute date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActiveMode" type="ActiveMode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A - Automatic Active 
+U - First Use Active
+M - Manual Active</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParentOfferingId" type="OfferingId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If this offering is a member of a bundled offering, this field indicates the corresponding bundled offering subscription instance key.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Status" type="OfferingStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>C04: Pending
+C01: Active
+C03: Deactivated
+C02: Suspend
+C06: Idle</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EffectiveTime" type="Time" minOccurs="0"/>
+			<xs:element name="ExpiredTime" type="Time" minOccurs="0"/>
+			<xs:element name="LatestActiveDate" type="Time" minOccurs="0"/>
+			<xs:element name="ProductList" type="ExtProductList" minOccurs="0"/>
+			<xs:element name="ContractInfo" type="ContractInfo" minOccurs="0"/>
+			<xs:element name="ProlongIdInfo" type="ProlongIdInfo" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="OfferingExtParameterList" minOccurs="0"/>
+			<xs:element name="Quantity" type="Quantity" minOccurs="0"/>
+			<xs:element name="ResourceList" type="ResourceList" minOccurs="0"/>
+			<xs:element name="ReserveSeq" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="string">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SubscribeReason" type="SubscribeReason" minOccurs="0"/>
+			<xs:element name="Remark" type="RemarkForOffer" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ProlongIdInfo">
+		<xs:sequence>
+			<xs:element name="DurationID" type="DurationId" minOccurs="0"/>
+			<xs:element name="EffectiveMode" type="ProlongEffectiveMode" minOccurs="0"/>
+			<xs:element name="OperationType" type="ProlongOperationType"/>
+			<xs:element name="ProlongActionType" type="ProlongActionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResourceList">
+		<xs:sequence>
+			<xs:element name="ResourceInfo" type="ResourceInfo" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

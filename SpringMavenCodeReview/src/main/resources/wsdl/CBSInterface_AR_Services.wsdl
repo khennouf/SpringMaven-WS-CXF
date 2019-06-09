@@ -1,0 +1,1392 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:cbscommon="http://www.huawei.com/bme/cbsinterface/cbscommon" xmlns:ar="http://www.huawei.com/bme/cbsinterface/arservices" xmlns:ns="http://cbs.huawei.com/ar/wsservice/arcommon" targetNamespace="http://www.huawei.com/bme/cbsinterface/arservices">
+	<types>
+		<xs:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.huawei.com/bme/cbsinterface/arservices">
+			<import namespace="http://www.huawei.com/bme/cbsinterface/cbscommon" schemaLocation="CBSInterface_MessageHeader.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Adjustment.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Recharge.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryBalance.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QuerySumBalanceAndCredit.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Payment2AR.xsd"/>
+			<include schemaLocation="CBSInterface_AR_TransferBalance.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryRechargeLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Billing2ARNotify.xsd"/>
+			<include schemaLocation="CBSInterface_AR_InnerBilling2ARNotify.xsd"/>
+			<include schemaLocation="CBSInterface_AR_DCServiceInterface.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Refund.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Payment.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Loan.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryTransferLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryInvoicePayment.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryInvoice.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryPaymentLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_CashRegisterOperate.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryCashRegister.xsd"/>
+			<include schemaLocation="CBSInterface_AR_BalanceShift.xsd"/>
+			<include schemaLocation="CBSInterface_AR_ApplyDispute.xsd"/>
+			<include schemaLocation="CBSInterface_AR_DealDispute.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryAdjustLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryWriteOffLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_CheckCashRegister.xsd"/>
+			<include schemaLocation="CBSInterface_AR_UpdateCashRegister.xsd"/>
+			<include schemaLocation="CBSInterface_AR_Adv2Deposit.xsd"/>
+			<include schemaLocation="CBSInterface_AR_ExchangeAcct.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryDepositBalance.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryLoanLog.xsd"/>
+			<include schemaLocation="CBSInterface_AR_ChangeDepositFreeze.xsd"/>
+			<include schemaLocation="CBSInterface_AR_QueryReleasedDeposit.xsd"/>
+			<include schemaLocation="CBSInterface_AR_ChangeTransferBlackList.xsd"/>
+			<element name="Adv2DepositRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="Adv2DepositRequest" type="ar:Adv2DepositRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Adv2DepositResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="Adv2DepositResult" type="ar:Adv2DepositResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryInvoicePaymentRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryInvoicePaymentRequest" type="ar:QueryInvoicePaymentRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryInvoicePaymentResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryInvoicePaymentResult" type="ar:QueryInvoicePaymentResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryPaymentLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryPaymentLogRequest" type="ar:QueryPaymentLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryPaymentLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryPaymentLogResult" type="ar:QueryPaymentLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryInvoiceRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryInvoiceRequest" type="ar:QueryInvoiceRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryInvoiceResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryInvoiceResult" type="ar:QueryInvoiceResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PaymentRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="PaymentRequest" type="ar:PaymentRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PaymentResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="PaymentResult" type="ar:PaymentResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PaymentRollBackRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="PaymentRollBackRequest" type="ar:PaymentRollBackRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PaymentRollBackResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RefundRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="RefundRequest" type="ar:RefundRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RefundResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="RefundResult" type="ar:RefundResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PANotifyRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="PANotifyRequest" type="ar:PANotifyRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PANotifyResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PACancelRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="PACancelRequest" type="ar:PACancelRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="PACancelResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="PACancelResult" type="ar:PACancelResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="WriteOffRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="WriteOffRequest" type="ar:WriteOffRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="WriteOffResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="WriteOffResult" type="ar:WriteOffResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Billing2ArNotifyRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="Billing2ArNotifyRequest" type="ar:Billing2ArNotifyRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Billing2ArNotifyResponseMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="Billing2ArNotifyResponse" type="ar:Billing2ArNotifyResponse"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="InnerBilling2ArNotifyRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="InnerBilling2ArNotifyRequest" type="ar:InnerBilling2ArNotifyRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="InnerBilling2ArNotifyResponseMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RechargeRollBackRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="RechargeRollBackRequest" type="ar:RechargeRollBackRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RechargeRollBackResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="RechargeRollBackResult" type="ar:RechargeRollBackResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="TransferBalanceRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="TransferBalanceRequest" type="ar:TransferBalanceRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="TransferBalanceResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="TransferBalanceResult" type="ar:TransferBalanceResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Payment2ARRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="Payment2ARRequest" type="ar:Payment2ARRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Payment2ARResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Payment2ARRollBackRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="Payment2ARRollBackRequest" type="ar:Payment2ARRollBackRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="Payment2ARRollBackResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RechargeRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="RechargeRequest" type="ar:RechargeRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="RechargeResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="RechargeResult" type="ar:RechargeResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="AdjustmentRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="AdjustmentRequest" type="ar:AdjustmentRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="AdjustmentResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="AdjustmentResult" type="ar:AdjustmentResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="LoanRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="LoanRequest" type="ar:LoanRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="LoanResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="LoanResult" type="ar:LoanResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryTransferLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryTransferLogRequest" type="ar:QueryTransferLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryTransferLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryTransferLogResult" type="ar:QueryTransferLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryBalanceRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryBalanceRequest" type="ar:QueryBalanceRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryBalanceResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryBalanceResult" type="ar:QueryBalanceResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QuerySumBalanceAndCreditRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QuerySumBalanceAndCreditRequest" type="ar:QuerySumBalanceAndCreditRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QuerySumBalanceAndCreditResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QuerySumBalanceAndCreditResult" type="ar:QuerySumBalanceAndCreditResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryRechargeLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryRechargeLogRequest" type="ar:QueryRechargeLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryRechargeLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryRechargeLogResult" type="ar:QueryRechargeLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="CashRegisterOperateRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="CashRegisterOperateRequest" type="ar:CashRegisterOperateRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="CashRegisterOperateResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryCashRegisterRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryCashRegisterRequest" type="ar:QueryCashRegisterRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryCashRegisterResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryCashRegisterResult" type="ar:QueryCashRegisterResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="BalanceShiftRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="BalanceShiftRequest" type="ar:BalanceShiftRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="BalanceShiftResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="BalanceShiftResult" type="ar:BalanceShiftResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="ApplyDisputeRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="ApplyDisputeRequest" type="ar:ApplyDisputeRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="ApplyDisputeResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="ApplyDisputeResult" type="ar:ApplyDisputeResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="DealDisputeRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="DealDisputeRequest" type="ar:DealDisputeRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="DealDisputeResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryAdjustLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryAdjustLogRequest" type="ar:QueryAdjustLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryAdjustLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryAdjustLogResult" type="ar:QueryAdjustLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryWriteOffLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryWriteOffLogRequest" type="ar:QueryWriteOffLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryWriteOffLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryWriteOffLogResult" type="ar:QueryWriteOffLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="CheckCashRegisterRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="CheckCashRegisterRequest" type="ar:CheckCashRegisterRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="CheckCashRegisterResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="CheckCashRegisterResult" type="ar:CheckCashRegisterResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="UpdateCashRegisterRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="UpdateCashRegisterRequest" type="ar:UpdateCashRegisterRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="UpdateCashRegisterResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="UpdateCashRegisterResult" type="ar:UpdateCashRegisterResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="ExchangeAcctRequestMsg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+                        <xs:element name="ExchangeAcctRequest" type="ar:ExchangeAcctRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </element>
+            <element name="ExchangeAcctResultMsg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+                        <xs:element name="ExchangeAcctResult" type="ar:ExchangeAcctResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </element>
+			<element name="QueryDepositBalanceRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryDepositBalanceRequest" type="ar:QueryDepositBalanceRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryDepositBalanceResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryDepositBalanceResult" type="ar:QueryDepositBalanceResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryLoanLogRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryLoanLogRequest" type="ar:QueryLoanLogRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryLoanLogResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryLoanLogResult" type="ar:QueryLoanLogResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			
+			<element name="QueryReleaseDepositRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="QueryReleaseDepositRequest" type="ar:QueryReleaseDepositRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="QueryReleaseDepositResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+						<xs:element name="QueryReleaseDepositResult" type="ar:QueryReleaseDepositResult"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			
+			<element name="ChangeDepositFreezeRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="ChangeDepositFreezeRequest" type="ar:ChangeDepositFreezeRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="ChangeDepositFreezeResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			
+			<element name="ChangeTransferBlackListRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RequestHeader" type="cbscommon:RequestHeader"/>
+						<xs:element name="ChangeTransferBlackListRequest" type="ar:ChangeTransferBlackListRequest"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			<element name="ChangeTransferBlackListResultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResultHeader" type="cbscommon:ResultHeader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</element>
+			
+			
+		</xs:schema>
+		
+		
+	</types>
+	<message name="Adv2DepositRequestMessage">
+		<part name="Adv2DepositRequestMsg" element="ar:Adv2DepositRequestMsg"/>
+	</message>
+	<message name="Adv2DepositResultMessage">
+		<part name="Adv2DepositResultMsg" element="ar:Adv2DepositResultMsg"/>
+	</message>
+	<message name="QueryInvoicePaymentRequestMessage">
+		<part name="QueryInvoicePaymentRequestMsg" element="ar:QueryInvoicePaymentRequestMsg"/>
+	</message>
+	<message name="QueryInvoicePaymentResultMessage">
+		<part name="QueryInvoicePaymentResultMsg" element="ar:QueryInvoicePaymentResultMsg"/>
+	</message>
+	<message name="QueryPaymentLogRequestMessage">
+		<part name="QueryPaymentLogRequestMsg" element="ar:QueryPaymentLogRequestMsg"/>
+	</message>
+	<message name="QueryPaymentLogResultMessage">
+		<part name="QueryPaymentLogResultMsg" element="ar:QueryPaymentLogResultMsg"/>
+	</message>
+	<message name="QueryInvoiceRequestMessage">
+		<part name="QueryInvoiceRequestMsg" element="ar:QueryInvoiceRequestMsg"/>
+	</message>
+	<message name="QueryInvoiceResultMessage">
+		<part name="QueryInvoiceResultMsg" element="ar:QueryInvoiceResultMsg"/>
+	</message>
+	<message name="PaymentRequestMessage">
+		<part name="PaymentRequestMsg" element="ar:PaymentRequestMsg"/>
+	</message>
+	<message name="PaymentResultMessage">
+		<part name="PaymentResultMsg" element="ar:PaymentResultMsg"/>
+	</message>
+	<message name="PaymentRollBackRequestMessage">
+		<part name="PaymentRollBackRequestMsg" element="ar:PaymentRollBackRequestMsg"/>
+	</message>
+	<message name="PaymentRollBackResultMessage">
+		<part name="PaymentRollBackResultMsg" element="ar:PaymentRollBackResultMsg"/>
+	</message>
+	<message name="RefundRequestMessage">
+		<part name="RefundRequestMsg" element="ar:RefundRequestMsg"/>
+	</message>
+	<message name="RefundResultMessage">
+		<part name="RefundResultMsg" element="ar:RefundResultMsg"/>
+	</message>
+	<message name="PANotifyRequestMessage">
+		<part name="PANotifyRequestMsg" element="ar:PANotifyRequestMsg"/>
+	</message>
+	<message name="PANotifyResultMessage">
+		<part name="PANotifyResultMsg" element="ar:PANotifyResultMsg"/>
+	</message>
+	<message name="PACancelRequestMessage">
+		<part name="PACancelRequestMsg" element="ar:PACancelRequestMsg"/>
+	</message>
+	<message name="PACancelResultMessage">
+		<part name="PACancelResultMsg" element="ar:PACancelResultMsg"/>
+	</message>
+	<message name="WriteOffRequestMessage">
+		<part name="WriteOffRequestMsg" element="ar:WriteOffRequestMsg"/>
+	</message>
+	<message name="WriteOffResultMessage">
+		<part name="WriteOffResultMsg" element="ar:WriteOffResultMsg"/>
+	</message>
+	<message name="Billing2ArNotifyRequestMessage">
+		<part name="Billing2ArNotifyRequestMsg" element="ar:Billing2ArNotifyRequestMsg"/>
+	</message>
+	<message name="Billing2ArNotifyResponseMessage">
+		<part name="Billing2ArNotifyResponseMsg" element="ar:Billing2ArNotifyResponseMsg"/>
+	</message>
+	<message name="InnerBilling2ArNotifyRequestMessage">
+		<part name="InnerBilling2ArNotifyRequestMsg" element="ar:InnerBilling2ArNotifyRequestMsg"/>
+	</message>
+	<message name="InnerBilling2ArNotifyResponseMessage">
+		<part name="InnerBilling2ArNotifyResponseMsg" element="ar:InnerBilling2ArNotifyResponseMsg"/>
+	</message>
+	<message name="RechargeRollBackRequestMessage">
+		<part name="RechargeRollBackRequestMsg" element="ar:RechargeRollBackRequestMsg"/>
+	</message>
+	<message name="RechargeRollBackResultMessage">
+		<part name="RechargeRollBackResultMsg" element="ar:RechargeRollBackResultMsg"/>
+	</message>
+	<message name="TransferBalanceRequestMessage">
+		<part name="TransferBalanceRequestMsg" element="ar:TransferBalanceRequestMsg"/>
+	</message>
+	<message name="TransferBalanceResultMessage">
+		<part name="TransferBalanceResultMsg" element="ar:TransferBalanceResultMsg"/>
+	</message>
+	<message name="Payment2ARRequestMessage">
+		<part name="Payment2ARRequestMsg" element="ar:Payment2ARRequestMsg"/>
+	</message>
+	<message name="Payment2ARResultMessage">
+		<part name="Payment2ARResultMsg" element="ar:Payment2ARResultMsg"/>
+	</message>
+	<message name="RechargeRequestMessage">
+		<part name="RechargeRequestMsg" element="ar:RechargeRequestMsg"/>
+	</message>
+	<message name="RechargeResultMessage">
+		<part name="RechargeResultMsg" element="ar:RechargeResultMsg"/>
+	</message>
+	<message name="AdjustmentRequestMessage">
+		<part name="AdjustmentRequestMsg" element="ar:AdjustmentRequestMsg"/>
+	</message>
+	<message name="AdjustmentResultMessage">
+		<part name="AdjustmentResultMsg" element="ar:AdjustmentResultMsg"/>
+	</message>
+	<message name="LoanRequestMessage">
+		<part name="LoanRequestMsg" element="ar:LoanRequestMsg"/>
+	</message>
+	<message name="LoanResultMessage">
+		<part name="LoanResultMsg" element="ar:LoanResultMsg"/>
+	</message>
+	<message name="QueryBalanceRequestMessage">
+		<part name="QueryBalanceRequestMsg" element="ar:QueryBalanceRequestMsg"/>
+	</message>
+	<message name="QueryBalanceResultMessage">
+		<part name="QueryBalanceResultMsg" element="ar:QueryBalanceResultMsg"/>
+	</message>
+	<message name="QuerySumBalanceAndCreditRequestMessage">
+		<part name="QuerySumBalanceAndCreditRequestMsg" element="ar:QuerySumBalanceAndCreditRequestMsg"/>
+	</message>
+	<message name="QuerySumBalanceAndCreditResultMessage">
+		<part name="QuerySumBalanceAndCreditResultMsg" element="ar:QuerySumBalanceAndCreditResultMsg"/>
+	</message>
+	<message name="QueryRechargeLogRequestMessage">
+		<part name="QueryRechargeLogRequestMsg" element="ar:QueryRechargeLogRequestMsg"/>
+	</message>
+	<message name="QueryRechargeLogResultMessage">
+		<part name="QueryRechargeLogResultMsg" element="ar:QueryRechargeLogResultMsg"/>
+	</message>
+	<message name="QueryTransferLogRequestMessage">
+		<part name="QueryTransferLogRequestMsg" element="ar:QueryTransferLogRequestMsg"/>
+	</message>
+	<message name="QueryTransferLogResultMessage">
+		<part name="QueryTransferLogResultMsg" element="ar:QueryTransferLogResultMsg"/>
+	</message>
+	<message name="Payment2ARRollBackRequestMessage">
+		<part name="Payment2ARRollBackRequestMsg" element="ar:Payment2ARRollBackRequestMsg"/>
+	</message>
+	<message name="Payment2ARRollBackResultMessage">
+		<part name="Payment2ARRollBackResultMsg" element="ar:Payment2ARRollBackResultMsg"/>
+	</message>
+	<message name="CashRegisterOperateRequestMessage">
+		<part name="CashRegisterOperateRequestMsg" element="ar:CashRegisterOperateRequestMsg"/>
+	</message>
+	<message name="CashRegisterOperateResultMessage">
+		<part name="CashRegisterOperateResultMsg" element="ar:CashRegisterOperateResultMsg"/>
+	</message>
+	<message name="QueryCashRegisterRequestMessage">
+		<part name="QueryCashRegisterRequestMsg" element="ar:QueryCashRegisterRequestMsg"/>
+	</message>
+	<message name="QueryCashRegisterResultMessage">
+		<part name="QueryCashRegisterResultMsg" element="ar:QueryCashRegisterResultMsg"/>
+	</message>
+	<message name="BalanceShiftRequestMessage">
+		<part name="BalanceShiftRequestMsg" element="ar:BalanceShiftRequestMsg"/>
+	</message>
+	<message name="BalanceShiftResultMessage">
+		<part name="BalanceShiftResultMsg" element="ar:BalanceShiftResultMsg"/>
+	</message>
+	<message name="ApplyDisputeRequestMessage">
+		<part name="ApplyDisputeRequestMsg" element="ar:ApplyDisputeRequestMsg"/>
+	</message>
+	<message name="ApplyDisputeResultMessage">
+		<part name="ApplyDisputeResultMsg" element="ar:ApplyDisputeResultMsg"/>
+	</message>
+	<message name="DealDisputeRequestMessage">
+		<part name="DealDisputeRequestMsg" element="ar:DealDisputeRequestMsg"/>
+	</message>
+	<message name="DealDisputeResultMessage">
+		<part name="DealDisputeResultMsg" element="ar:DealDisputeResultMsg"/>
+	</message>
+	<message name="QueryAdjustLogRequestMessage">
+		<part name="QueryAdjustLogRequestMsg" element="ar:QueryAdjustLogRequestMsg"/>
+	</message>
+	<message name="QueryAdjustLogResultMessage">
+		<part name="QueryAdjustLogResultMsg" element="ar:QueryAdjustLogResultMsg"/>
+	</message>
+	<message name="QueryWriteOffLogRequestMessage">
+		<part name="QueryWriteOffLogRequestMsg" element="ar:QueryWriteOffLogRequestMsg"/>
+	</message>
+	<message name="QueryWriteOffLogResultMessage">
+		<part name="QueryWriteOffLogResultMsg" element="ar:QueryWriteOffLogResultMsg"/>
+	</message>
+	<message name="CheckCashRegisterRequestMessage">
+		<part name="CheckCashRegisterRequestMsg" element="ar:CheckCashRegisterRequestMsg"/>
+	</message>
+	<message name="CheckCashRegisterResultMessage">
+		<part name="CheckCashRegisterResultMsg" element="ar:CheckCashRegisterResultMsg"/>
+	</message>
+	<message name="UpdateCashRegisterRequestMessage">
+		<part name="UpdateCashRegisterRequestMsg" element="ar:UpdateCashRegisterRequestMsg"/>
+	</message>
+	<message name="UpdateCashRegisterResultMessage">
+		<part name="UpdateCashRegisterResultMsg" element="ar:UpdateCashRegisterResultMsg"/>
+	</message>
+	<message name="ExchangeAcctRequestMessage">
+       <part name="ExchangeAcctRequestMsg" element="ar:ExchangeAcctRequestMsg"/>
+    </message>
+	<message name="ExchangeAcctResultMessage">
+	    <part name="ExchangeAcctResultMsg" element="ar:ExchangeAcctResultMsg"/>
+	</message>
+	<message name="QueryDepositBalanceRequestMessage">
+		<part name="QueryDepositBalanceRequestMsg" element="ar:QueryDepositBalanceRequestMsg"/>
+	</message>
+	<message name="QueryDepositBalanceResultMessage">
+		<part name="QueryDepositBalanceResultMsg" element="ar:QueryDepositBalanceResultMsg"/>
+	</message>
+	<message name="QueryLoanLogRequestMessage">
+		<part name="QueryLoanLogRequestMsg" element="ar:QueryLoanLogRequestMsg"/>
+	</message>
+	<message name="QueryLoanLogResultMessage">
+		<part name="QueryLoanLogResultMsg" element="ar:QueryLoanLogResultMsg"/>
+	</message>
+	
+	<message name="ChangeDepositFreezeRequestMessage">
+		<part name="ChangeDepositFreezeRequestMsg" element="ar:ChangeDepositFreezeRequestMsg"/>
+	</message>
+	<message name="ChangeDepositFreezeResultMessage">
+		<part name="ChangeDepositFreezeResultMsg" element="ar:ChangeDepositFreezeResultMsg"/>
+	</message>
+	
+	<message name="ChangeTransferBlackListRequestMessage">
+		<part name="ChangeTransferBlackListRequestMsg" element="ar:ChangeTransferBlackListRequestMsg"/>
+	</message>
+	<message name="ChangeTransferBlackListResultMessage">
+		<part name="ChangeTransferBlackListResultMsg" element="ar:ChangeTransferBlackListResultMsg"/>
+	</message>
+	
+	<message name="QueryReleaseDepositRequestMessage">
+		<part name="QueryReleaseDepositRequestMsg" element="ar:QueryReleaseDepositRequestMsg"/>
+	</message>
+	<message name="QueryReleaseDepositResultMessage">
+		<part name="QueryReleaseDepositResultMsg" element="ar:QueryReleaseDepositResultMsg"/>
+	</message>
+	
+	
+	<portType name="ArServices">
+		<operation name="Adv2Deposit">
+			<input message="ar:Adv2DepositRequestMessage"/>
+			<output message="ar:Adv2DepositResultMessage"/>
+		</operation>
+		<operation name="QueryInvoicePayment">
+			<input message="ar:QueryInvoicePaymentRequestMessage"/>
+			<output message="ar:QueryInvoicePaymentResultMessage"/>
+		</operation>
+		<operation name="QueryPaymentLog">
+			<input message="ar:QueryPaymentLogRequestMessage"/>
+			<output message="ar:QueryPaymentLogResultMessage"/>
+		</operation>
+		<operation name="QueryInvoice">
+			<input message="ar:QueryInvoiceRequestMessage"/>
+			<output message="ar:QueryInvoiceResultMessage"/>
+		</operation>
+		<operation name="Payment">
+			<input message="ar:PaymentRequestMessage"/>
+			<output message="ar:PaymentResultMessage"/>
+		</operation>
+		<operation name="PaymentRollBack">
+			<input message="ar:PaymentRollBackRequestMessage"/>
+			<output message="ar:PaymentRollBackResultMessage"/>
+		</operation>
+		<operation name="Refund">
+			<input message="ar:RefundRequestMessage"/>
+			<output message="ar:RefundResultMessage"/>
+		</operation>
+		<operation name="PANotify">
+			<input message="ar:PANotifyRequestMessage"/>
+			<output message="ar:PANotifyResultMessage"/>
+		</operation>
+		<operation name="PACancel">
+			<input message="ar:PACancelRequestMessage"/>
+			<output message="ar:PACancelResultMessage"/>
+		</operation>
+		<operation name="WriteOff">
+			<input message="ar:WriteOffRequestMessage"/>
+			<output message="ar:WriteOffResultMessage"/>
+		</operation>
+		<operation name="Billing2ArNotify">
+			<input message="ar:Billing2ArNotifyRequestMessage"/>
+			<output message="ar:Billing2ArNotifyResponseMessage"/>
+		</operation>
+		<operation name="InnerBilling2ArNotify">
+			<input message="ar:InnerBilling2ArNotifyRequestMessage"/>
+			<output message="ar:InnerBilling2ArNotifyResponseMessage"/>
+		</operation>
+		<operation name="RechargeRollBack">
+			<input message="ar:RechargeRollBackRequestMessage"/>
+			<output message="ar:RechargeRollBackResultMessage"/>
+		</operation>
+		<operation name="Recharge">
+			<input message="ar:RechargeRequestMessage"/>
+			<output message="ar:RechargeResultMessage"/>
+		</operation>
+		<operation name="Adjustment">
+			<input message="ar:AdjustmentRequestMessage"/>
+			<output message="ar:AdjustmentResultMessage"/>
+		</operation>
+		<operation name="Loan">
+			<input message="ar:LoanRequestMessage"/>
+			<output message="ar:LoanResultMessage"/>
+		</operation>
+		<operation name="QueryBalance">
+			<input message="ar:QueryBalanceRequestMessage"/>
+			<output message="ar:QueryBalanceResultMessage"/>
+		</operation>
+		<operation name="QuerySumBalanceAndCredit">
+			<input message="ar:QuerySumBalanceAndCreditRequestMessage"/>
+			<output message="ar:QuerySumBalanceAndCreditResultMessage"/>
+		</operation>
+		<operation name="Payment2AR">
+			<input message="ar:Payment2ARRequestMessage"/>
+			<output message="ar:Payment2ARResultMessage"/>
+		</operation>
+		<operation name="TransferBalance">
+			<input message="ar:TransferBalanceRequestMessage"/>
+			<output message="ar:TransferBalanceResultMessage"/>
+		</operation>
+		<operation name="QueryRechargeLog">
+			<input message="ar:QueryRechargeLogRequestMessage"/>
+			<output message="ar:QueryRechargeLogResultMessage"/>
+		</operation>
+		<operation name="QueryTransferLog">
+			<input message="ar:QueryTransferLogRequestMessage"/>
+			<output message="ar:QueryTransferLogResultMessage"/>
+		</operation>
+		<operation name="Payment2ARRollBack">
+			<input message="ar:Payment2ARRollBackRequestMessage"/>
+			<output message="ar:Payment2ARRollBackResultMessage"/>
+		</operation>
+		<operation name="CashRegisterOperate">
+			<input message="ar:CashRegisterOperateRequestMessage"/>
+			<output message="ar:CashRegisterOperateResultMessage"/>
+		</operation>
+		<operation name="QueryCashRegister">
+			<input message="ar:QueryCashRegisterRequestMessage"/>
+			<output message="ar:QueryCashRegisterResultMessage"/>
+		</operation>
+		<operation name="BalanceShift">
+			<input message="ar:BalanceShiftRequestMessage"/>
+			<output message="ar:BalanceShiftResultMessage"/>
+		</operation>
+		<operation name="ApplyDispute">
+			<input message="ar:ApplyDisputeRequestMessage"/>
+			<output message="ar:ApplyDisputeResultMessage"/>
+		</operation>
+		<operation name="DealDispute">
+			<input message="ar:DealDisputeRequestMessage"/>
+			<output message="ar:DealDisputeResultMessage"/>
+		</operation>
+		<operation name="QueryAdjustLog">
+			<input message="ar:QueryAdjustLogRequestMessage"/>
+			<output message="ar:QueryAdjustLogResultMessage"/>
+		</operation>
+		<operation name="QueryWriteOffLog">
+			<input message="ar:QueryWriteOffLogRequestMessage"/>
+			<output message="ar:QueryWriteOffLogResultMessage"/>
+		</operation>
+		<operation name="CheckCashRegister">
+			<input message="ar:CheckCashRegisterRequestMessage"/>
+			<output message="ar:CheckCashRegisterResultMessage"/>
+		</operation>
+		<operation name="UpdateCashRegister">
+			<input message="ar:UpdateCashRegisterRequestMessage"/>
+			<output message="ar:UpdateCashRegisterResultMessage"/>
+		</operation>
+	    <operation name="ExchangeAcct">
+          <input message="ar:ExchangeAcctRequestMessage"/>
+          <output message="ar:ExchangeAcctResultMessage"/>
+        </operation>
+		<operation name="QueryDepositBalance">
+			<input message="ar:QueryDepositBalanceRequestMessage"/>
+			<output message="ar:QueryDepositBalanceResultMessage"/>
+		</operation>
+		<operation name="QueryLoanLog">
+			<input message="ar:QueryLoanLogRequestMessage"/>
+			<output message="ar:QueryLoanLogResultMessage"/>
+		</operation>
+		
+		<operation name="ChangeDepositFreeze">
+			<input message="ar:ChangeDepositFreezeRequestMessage"/>
+			<output message="ar:ChangeDepositFreezeResultMessage"/>
+		</operation>
+		
+		<operation name="ChangeTransferBlackList">
+			<input message="ar:ChangeTransferBlackListRequestMessage"/>
+			<output message="ar:ChangeTransferBlackListResultMessage"/>
+		</operation>
+		
+		<operation name="QueryReleaseDeposit">
+			<input message="ar:QueryReleaseDepositRequestMessage"/>
+			<output message="ar:QueryReleaseDepositResultMessage"/>
+		</operation>
+		
+	</portType>
+	
+	<binding name="ArServicsBinding" type="ar:ArServices">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Adv2Deposit">
+			<soap:operation soapAction="Adv2Deposit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryInvoicePayment">
+			<soap:operation soapAction="QueryInvoicePayment" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryPaymentLog">
+			<soap:operation soapAction="QueryPaymentLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryInvoice">
+			<soap:operation soapAction="QueryInvoice" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Payment">
+			<soap:operation soapAction="Payment" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PaymentRollBack">
+			<soap:operation soapAction="PaymentRollBack" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Refund">
+			<soap:operation soapAction="Refund" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PANotify">
+			<soap:operation soapAction="PANotify" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PACancel">
+			<soap:operation soapAction="PACancel" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="WriteOff">
+			<soap:operation soapAction="WriteOff" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Billing2ArNotify">
+			<soap:operation soapAction="Billing2ArNotify" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="InnerBilling2ArNotify">
+			<soap:operation soapAction="InnerBilling2ArNotify" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="RechargeRollBack">
+			<soap:operation soapAction="RechargeRollBack" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="TransferBalance">
+			<soap:operation soapAction="TransferBalance" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Payment2AR">
+			<soap:operation soapAction="Payment2AR" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Adjustment">
+			<soap:operation soapAction="Adjustment" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Loan">
+			<soap:operation soapAction="Loan" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Recharge">
+			<soap:operation soapAction="Recharge" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryBalance">
+			<soap:operation soapAction="QueryBalance" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QuerySumBalanceAndCredit">
+			<soap:operation soapAction="QuerySumBalanceAndCredit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryRechargeLog">
+			<soap:operation soapAction="QueryRechargeLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryTransferLog">
+			<soap:operation soapAction="QueryTransferLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="Payment2ARRollBack">
+			<soap:operation soapAction="Payment2ARRollBack" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CashRegisterOperate">
+			<soap:operation soapAction="CashRegisterOperate" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryCashRegister">
+			<soap:operation soapAction="QueryCashRegister" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="BalanceShift">
+			<soap:operation soapAction="BalanceShift" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ApplyDispute">
+			<soap:operation soapAction="ApplyDispute" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DealDispute">
+			<soap:operation soapAction="DealDispute" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryAdjustLog">
+			<soap:operation soapAction="QueryAdjustLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryWriteOffLog">
+			<soap:operation soapAction="QueryWriteOffLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CheckCashRegister">
+			<soap:operation soapAction="CheckCashRegister" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="UpdateCashRegister">
+			<soap:operation soapAction="UpdateCashRegister" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	    <operation name="ExchangeAcct">
+            <soap:operation soapAction="ExchangeAcct" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+		<operation name="QueryDepositBalance">
+			<soap:operation soapAction="QueryDepositBalance" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryLoanLog">
+			<soap:operation soapAction="QueryLoanLog" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		
+		<operation name="ChangeDepositFreeze">
+			<soap:operation soapAction="ChangeDepositFreeze" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		
+		<operation name="ChangeTransferBlackList">
+			<soap:operation soapAction="ChangeTransferBlackList" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		
+		<operation name="QueryReleaseDeposit">
+			<soap:operation soapAction="QueryReleaseDeposit" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		
+	</binding>
+	<service name="ArServices">
+		<port name="ArServicesPort" binding="ar:ArServicsBinding">
+			<soap:address location="http://www.huawei.com/bme/cbsinterface/arservices/wsdl/CBSInterface_AR_Services.wsdl"/>
+		</port>
+	</service>
+</definitions>

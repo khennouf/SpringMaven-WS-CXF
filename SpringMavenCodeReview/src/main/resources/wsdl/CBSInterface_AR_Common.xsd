@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" targetNamespace="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>COMMON</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="Tax">
+		<xs:sequence>
+			<xs:element name="TaxCode" type="xs:string"/>
+			<xs:element name="TaxAmount" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SimpleProperty">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:string">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SubGroupAccessCode">
+		<xs:choice>
+			<xs:element name="SubGroupKey" type="xs:string"/>
+			<xs:element name="SubGroupCode" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CustAccessCode">
+		<xs:choice>
+			<xs:element name="CustomerKey" type="xs:string"/>
+			<xs:element name="CustomerCode" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SubAccessCode">
+		<xs:choice>
+			<xs:element name="PrimaryIdentity" type="xs:string"/>
+			<xs:element name="SubscriberKey" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AcctAccessCode">
+		<xs:choice>
+			<xs:element name="PrimaryIdentity" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Identify the default Account which the Primary Identity Use.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AccountKey" type="xs:string"/>
+			<xs:element name="AccountCode" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FeeDetailValue">
+		<xs:sequence>
+			<xs:element name="ChargeSeq" type="xs:string"/>
+			<xs:element name="ChargeCode" type="xs:string"/>
+			<xs:element name="OfferingID" type="xs:integer" minOccurs="0"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+			<xs:element name="SalesAmount" type="xs:integer" minOccurs="0"/>
+			<xs:element name="UnitPrice" type="xs:long" minOccurs="0"/>
+			<xs:element name="ChargeAmt" type="xs:long"/>
+			<xs:element name="DiscountAmt" type="xs:long"/>
+			<xs:element name="WaiveAmt" type="xs:long"/>
+			<xs:element name="ResTypeID" type="xs:string" minOccurs="0"/>
+			<xs:element name="ResModeID" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tax" type="arcommon:Tax" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ChargeType" type="xs:string" minOccurs="0"/>
+			<xs:element name="DepositType" type="xs:string" minOccurs="0"/>
+			<xs:element name="PaymentDetail" type="arcommon:PaymentDetailValue" maxOccurs="unbounded"/>
+			<xs:element name="Remark" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaymentDetailValue">
+		<xs:sequence>
+			<xs:element name="PaymentMethod" type="xs:string"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+			<xs:element name="Amount" type="xs:long"/>
+			<xs:element name="BankCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankBranchCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctType" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="CreditCardType" type="xs:string" minOccurs="0"/>
+			<xs:element name="ExpDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="CVVNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="ChequeNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="Remark" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankInfo">
+		<xs:sequence>
+			<xs:element name="BankCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankBranchCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctType" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="CreditCardType" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctName" type="xs:string" minOccurs="0"/>
+			<xs:element name="ExpDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="CVVNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="CheckNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="CheckDate" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BalanceAdjustment">
+		<xs:sequence>
+			<xs:element name="BalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="BalanceID" type="xs:long" minOccurs="0"/>
+			<xs:element name="AdjustmentType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It indicates the adjustment is up or down</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdjustmentAmt" type="xs:long" minOccurs="0"/>
+			<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+			<xs:element name="EffectiveTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="ExpireTime" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcctBalance">
+		<xs:sequence>
+			<xs:element name="BalanceType" type="xs:string"/>
+			<xs:element name="BalanceTypeName" type="xs:string" minOccurs="0"/>
+			<xs:element name="TotalAmount" type="xs:long"/>
+			<xs:element name="DepositFlag" type="xs:string"/>
+			<xs:element name="RefundFlag" type="xs:string"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+			<xs:element name="BalanceDetail" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BalanceInstanceID" type="xs:long"/>
+						<xs:element name="Amount" type="xs:long"/>
+						<xs:element name="InitialAmount" type="xs:long"/>
+						<xs:element name="EffectiveTime" type="xs:string"/>
+						<xs:element name="ExpireTime" type="xs:string"/>
+						<xs:element name="AcctBalOriginal" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OriginalType" type="xs:string"/>
+									<xs:element name="OriginalID" type="xs:long">
+										<xs:annotation>
+											<xs:documentation>当OriginalType为1时，此字段表示OfferingID；当OriginalType为2时，此字段表示全局计划标识</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>It is reserved for future extension</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LoanChgInfo">
+		<xs:sequence>
+			<xs:element name="OldLoanAmt" type="xs:long"/>
+			<xs:element name="NewLoanAmt" type="xs:long"/>
+			<xs:element name="LoanPaymentAmt" type="xs:long"/>
+			<xs:element name="LoanInterestAmt" type="xs:long"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BalanceChgInfo">
+		<xs:sequence>
+			<xs:element name="BalanceType" type="xs:string"/>
+			<xs:element name="BalanceID" type="xs:long" minOccurs="0"/>
+			<xs:element name="BalanceTypeName" type="xs:string" minOccurs="0"/>
+			<xs:element name="OldBalanceAmt" type="xs:long"/>
+			<xs:element name="NewBalanceAmt" type="xs:long"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OfferingInfo">
+		<xs:sequence>
+			<xs:element name="OfferingID" type="xs:integer" nillable="true"/>
+			<xs:element name="PurchaseSeq" type="xs:string" minOccurs="0"/>
+			<xs:element name="OwnerType" type="xs:string" nillable="true"/>
+			<xs:element name="OwnerID" type="xs:string" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FreeUnitChgInfo">
+		<xs:sequence>
+			<xs:element name="FreeUnitInstanceID" type="xs:long" minOccurs="0"/>
+			<xs:element name="FreeUnitType" type="xs:string"/>
+			<xs:element name="FreeUnitTypeName" type="xs:string" minOccurs="0"/>
+			<xs:element name="MeasureUnit" type="xs:integer"/>
+			<xs:element name="MeasureUnitName" type="xs:string" minOccurs="0"/>
+			<xs:element name="OldAmt" type="xs:long"/>
+			<xs:element name="NewAmt" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreditChgInfo">
+		<xs:sequence>
+			<xs:element name="CreditLimitID" type="xs:long" minOccurs="0"/>
+			<xs:element name="CreditLimitType" type="xs:string"/>
+			<xs:element name="CreditLimitTypeName" type="xs:string" minOccurs="0"/>
+			<xs:element name="OldLeftCreditAmt" type="xs:long"/>
+			<xs:element name="NewLeftCreditAmt" type="xs:long"/>
+			<xs:element name="MeasureUnit" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="string20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string64">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MainAcctBalance">
+		<xs:sequence>
+			<xs:element name="BalanceType" type="xs:string"/>
+			<xs:element name="BalanceTypeName" type="xs:string" minOccurs="0"/>
+			<xs:element name="TotalAmount" type="xs:long"/>
+			<xs:element name="DepositFlag" type="xs:string"/>
+			<xs:element name="RefundFlag" type="xs:string"/>
+			<xs:element name="CurrencyID" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

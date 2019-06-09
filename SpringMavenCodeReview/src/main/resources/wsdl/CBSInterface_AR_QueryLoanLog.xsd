@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--query loan log-->
+	<xs:complexType name="QueryLoanLogRequest">
+		<xs:sequence>
+			<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryLoanLogResult">
+		<xs:sequence>
+			<xs:element name="LoanLogSummary" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TotalDebtAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>total amount that should be paid by subscriber to close all his debts</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BlacklistStatus" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>loan black status: Y:yes  N:no</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BlacelistDate" type="xs:string"/>
+						<xs:element name="AdditionalProperty" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>It is reserved for future extension</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Code" type="xs:string"/>
+									<xs:element name="Value" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LoanLogDetail" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>取自内存表RB_PPS_LOAN_INFO,所有未关闭借贷记录
+</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="LoanID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>a unique identifier for each loan
+format:Subid+":"+entry_date</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="InitLoanAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>Amount granted to subscriber using loan service</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="initLoanDate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>申请借贷时间</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="InitLoanPoundage" type="xs:long" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>fees deducted once subscriber gets the loan successfully.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RepaymentAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>Total amount subscriber must pay against this loan</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="LoanStatus" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>O: open.
+C: close.
+
+If subscriber repaid the loan totally, status should be “Closed”
+If subscriber didn’t pay full loan, status will be “Open”.
+</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="PaidAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>Amount collected from subscriber against that loan</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RemainingAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>Amount remaining on subscriber to close that loan</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="GraceDate" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Date when subscriber should close that loan, else, he will be blacklisted</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="AdditionalProperty" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>It is reserved for future extension</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Code" type="xs:string"/>
+									<xs:element name="Value" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RepaymentLogDetail" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>取自物理表RB_PPS_LOAN_LOG,只需还贷记录(未关闭借贷记录见LoanLogDetail
+</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OperDate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Date when subscriber repayment for loan request</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="OperType" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>L: loan
+R:repay by recharge
+T:repay by transfer
+A:repay by adjustment
+F:repay in force
+C:repay Cancellation due to top-up reversal..
+</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="InitLoanDate" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>借贷发生时间/LOAN_OCCUR_DATE</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="InitLoanAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>借贷金额初始值</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="InitLoanPoundage" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>借贷手续费初始值</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RepayAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>本次偿还借贷金额/REPAY_AMT</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RepayPoundage" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>本次偿还借贷手续费/REPAY_POUNDAGE</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RemainingAMT" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>当前未偿还借贷手续费/LOAN_AMT</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RemainingPoundage" type="xs:long">
+							<xs:annotation>
+								<xs:documentation>当前未偿还借贷手续费/LOAN_POUNDAGE</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

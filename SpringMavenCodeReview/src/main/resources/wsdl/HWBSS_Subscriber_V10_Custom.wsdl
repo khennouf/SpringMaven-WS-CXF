@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://crm.huawei.com/service/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://crm.huawei.com/query/" targetNamespace="http://crm.huawei.com/service/">
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://crm.huawei.com/query/" schemaLocation="QuerySubscriberAllInfo.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="QuerySubscriberAllInfoRequestMessage">
+		<part name="QuerySubscriberAllInfoReqMsg" element="ns:QuerySubscriberAllInfoReqMsg"/>
+	</message>
+	<message name="QuerySubscriberAllInfoResponseMessage">
+		<part name="QuerySubscriberAllInfoRspMsg" element="ns:QuerySubscriberAllInfoRspMsg"/>
+	</message>
+	<portType name="SubscriberInterfaces">
+		<operation name="QuerySubscriberAllInfo">
+			<input message="tns:QuerySubscriberAllInfoRequestMessage"/>
+			<output message="tns:QuerySubscriberAllInfoResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="SubscriberBinding" type="tns:SubscriberInterfaces">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="QuerySubscriberAllInfo">
+			<soap:operation soapAction="QuerySubscriberAllInfo" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SubscriberServices">
+		<port name="SubscriberServicePort" binding="tns:SubscriberBinding">
+			<soap:address location="http://www.huawei.com/bss/HWBSSSubscriberService"/>
+		</port>
+	</service>
+</definitions>

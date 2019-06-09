@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Wangzhandong (Huawei) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Query balance -->
+	<xs:complexType name="QueryDepositBalanceRequest">
+		<xs:sequence>
+			<xs:element name="QueryObj">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+						<xs:element name="AcctAccessCode">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="arcommon:AcctAccessCode">
+										<xs:sequence>
+											<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DepositType" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryDepositBalanceResult">
+		<xs:sequence>
+			<xs:element name="DepositBalanceList" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AcctKey" type="xs:string"/>
+						<xs:element name="CreditID" type="xs:string"/>
+						<xs:element name="DepositType" type="xs:string"/>
+						<xs:element name="Amount" type="xs:long"/>
+						<xs:element name="InitialAmount" type="xs:long"/>
+						<xs:element name="CurrencyID" type="xs:integer"/>
+						<xs:element name="DepositOrigin" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="TransID" type="xs:string"/>
+									<xs:element name="PaymentMethod" type="xs:string" minOccurs="0"/>
+									<xs:element name="PayChannelID" type="xs:string" minOccurs="0"/>
+									<xs:element name="Amount" type="xs:long"/>
+									<xs:element name="OperID" type="xs:long" minOccurs="0"/>
+									<xs:element name="DeptID" type="xs:long" minOccurs="0"/>
+									<xs:element name="EntryDate" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

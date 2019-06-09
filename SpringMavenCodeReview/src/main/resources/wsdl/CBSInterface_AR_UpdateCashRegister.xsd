@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Wangzhandong (Huawei) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--query cash register status-->
+	<xs:complexType name="UpdateCashRegisterRequest">
+		<xs:sequence>
+			<xs:element name="BatchNo" type="xs:long"/>
+			<xs:element name="TransactionID" type="xs:string" minOccurs="0"/>
+			<xs:element name="TransactionTime" type="xs:string"/>
+			<xs:element name="CurrencyID" type="xs:string" minOccurs="0"/>
+			<xs:element name="TransactionList" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PaymentMethodID" type="xs:string"/>
+						<xs:element name="BankCode" type="xs:string" minOccurs="0"/>
+						<xs:element name="BankBranchCode" type="xs:string" minOccurs="0"/>
+						<xs:element name="ChequeNo" type="xs:string" minOccurs="0"/>
+						<xs:element name="TransactionAmount" type="xs:long"/>
+						<xs:element name="PaymentDetailValue" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ChargeSeq" type="xs:string"/>
+									<xs:element name="ChargeCode" type="xs:string"/>
+									<xs:element name="OfferingID" type="xs:integer" minOccurs="0"/>
+									<xs:element name="CurrencyID" type="xs:integer"/>
+									<xs:element name="SalesAmount" type="xs:integer" minOccurs="0"/>
+									<xs:element name="UnitPrice" type="xs:long" minOccurs="0"/>
+									<xs:element name="ChargeAmt" type="xs:long"/>
+									<xs:element name="DiscountAmt" type="xs:long"/>
+									<xs:element name="WaiveAmt" type="xs:long"/>
+									<xs:element name="ResTypeID" type="xs:string" minOccurs="0"/>
+									<xs:element name="ResModeID" type="xs:string" minOccurs="0"/>
+									<xs:element name="Tax" type="arcommon:Tax" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="ChargeType" type="xs:string" minOccurs="0"/>
+									<xs:element name="DepositType" type="xs:string" minOccurs="0"/>
+									<xs:element name="Remark" type="xs:string" minOccurs="0"/>
+									<xs:element name="ServiceDesc" type="xs:string" minOccurs="0"/>
+									<xs:element name="ItemID" type="xs:string" minOccurs="0"/>
+									<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OperID" type="xs:long"/>
+			<xs:element name="CustCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="CustType" type="xs:string" minOccurs="0"/>
+			<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+			<xs:element name="AcctCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="MSISDN" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>MSISDN for individual and contact number for family or corporate payment </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UpdateCashRegisterResult">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

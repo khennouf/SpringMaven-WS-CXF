@@ -1,0 +1,95 @@
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<xs:schema xmlns:bt="http://crm.huawei.com/basetype/" xmlns="http://crm.huawei.com/query/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://crm.huawei.com/query/" elementFormDefault="qualified">
+	<xs:import namespace="http://crm.huawei.com/basetype/" schemaLocation="CRMBaseType_Customer.xsd"/>
+	<xs:element name="QuerySubscriberAllInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RequestHeader" type="bt:RequestHeader"/>
+				<xs:element name="QuerySubscriberAllInfoBody" type="QuerySubscriberAllInfoIn"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="QuerySubscriberAllInfoIn">
+		<xs:all>
+			<xs:element name="ExternalSubscriberId" type="bt:ExternalSubscriberId" minOccurs="0"/>
+			<xs:element name="SubscriberId" type="bt:SubscriberId" minOccurs="0"/>
+			<xs:element name="IncludeOfferFlag" type="bt:IncludeOfferFlag">
+				<xs:annotation>
+					<xs:documentation>0 Non-including
+1 Including</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ServiceNumber" type="bt:ServiceNumber" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="bt:ExtParameterList" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:element name="QuerySubscriberAllInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ResponseHeader" type="bt:ResponseHeader"/>
+				<xs:element name="QuerySubscriberAllInfoBody" minOccurs="0">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="GetSubscriberData" type="GetSubscriberDataOut" minOccurs="0"/>
+							<xs:element name="GetSubGroupFlag" type="GetSubGroupFlagOut" minOccurs="0"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="GetSubscriberDataOut">
+		<xs:all>
+			<xs:element name="SubscriberId" type="bt:SubscriberId" minOccurs="0"/>
+			<xs:element name="AccountId" type="bt:AccountId" minOccurs="0"/>
+			<xs:element name="CustomerId" type="bt:CustomerId" minOccurs="0"/>
+			<xs:element name="CustomerCode" type="bt:CustomerCode" minOccurs="0"/>
+			<xs:element name="ActualCustomer" type="bt:ActualCustInfo" minOccurs="0"/>
+			<xs:element name="ExternalCustomerId" type="bt:ExternalCustomerId" minOccurs="0"/>
+			<xs:element name="ServiceNumber" type="bt:ServiceNumber" minOccurs="0"/>
+			<xs:element name="SubscriberType" type="bt:SubscriberPrepaidFlag" minOccurs="0"/>
+			<xs:element name="SubscriberLevel" type="bt:SubscriberLevel" minOccurs="0"/>
+			<xs:element name="AccountCode" type="bt:AccountCode32" minOccurs="0"/>
+			<xs:element name="NetworkType" type="bt:TeleType" minOccurs="0"/>
+			<xs:element name="IMSI" type="bt:IMSI" minOccurs="0"/>
+			<xs:element name="ICCID" type="bt:ICCID" minOccurs="0"/>
+			<xs:element name="PIN1" type="bt:PIN1" minOccurs="0"/>
+			<xs:element name="PIN2" type="bt:PIN2" minOccurs="0"/>
+			<xs:element name="PUK1" type="bt:PUK1" minOccurs="0"/>
+			<xs:element name="PUK2" type="bt:PUK2" minOccurs="0"/>
+			<xs:element name="BrandId" type="bt:BrandId" minOccurs="0"/>
+			<xs:element name="Language" type="bt:Language" minOccurs="0"/>
+			<xs:element name="WrittenLanguage" type="bt:WrittenLanguage" minOccurs="0"/>
+			<xs:element name="EffectiveDate" type="bt:Time" minOccurs="0"/>
+			<xs:element name="ExpireDate" type="bt:Time" minOccurs="0"/>
+			<xs:element name="ActiveDate" type="bt:Time" minOccurs="0"/>			
+			<xs:element name="AccessType" minOccurs="0">						
+				<xs:simpleType>							
+					<xs:restriction base="xs:string">								
+						<xs:maxLength value="2"/>							
+					</xs:restriction>						
+				</xs:simpleType>					
+			</xs:element>
+			<xs:element name="PrimaryOffering" type="bt:GetSubOfferingInfo" minOccurs="0"/>
+			<xs:element name="SupplementaryOfferingList" type="bt:GetSubOfferingList" minOccurs="0"/>
+			<xs:element name="DealerId" type="bt:DealerId" minOccurs="0"/>
+			<xs:element name="Status" type="bt:SubscriberStatus" minOccurs="0"/>
+			<xs:element name="StatusReason" type="bt:SubscriberStatusReason" minOccurs="0"/>
+			<xs:element name="BeId" type="bt:BeID" minOccurs="0"/>
+			<xs:element name="ResignedTimestamp" type="bt:Time" minOccurs="0"/>
+			<xs:element name="PhoneBookRegistration" type="bt:PhoneBookRegistration" minOccurs="0"/>
+			<xs:element name="RelaSubEntity" type="bt:RelaSubEntity" minOccurs="0"/>
+			<xs:element name="ConsumptionLimitList" type="bt:ConsumptionLimitList" minOccurs="0"/>
+			<xs:element name="DNESettingsList" type="bt:DNESettingList" minOccurs="0"/>
+			<xs:element name="AddressList" type="bt:AddressList" minOccurs="0"/>
+			<xs:element name="DPAInfo" type="bt:DPAInfo" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="bt:ExtParameterList" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="GetSubGroupFlagOut">
+		<xs:sequence>
+			<xs:element name="SubGroupFlag" type="bt:CustomerId"/>
+			<xs:element name="ExtParamList" type="bt:ExtParameterList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

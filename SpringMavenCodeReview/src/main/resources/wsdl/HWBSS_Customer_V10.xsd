@@ -1,0 +1,225 @@
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by f60017193 (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.huawei.com/bss/soaif/interface/common/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/CustomerService/" targetNamespace="http://www.huawei.com/bss/soaif/interface/CustomerService/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.huawei.com/bss/soaif/interface/common/" schemaLocation="./HWBSS_CommonData_V10.xsd"/>
+	<xs:element name="CreateCustReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="Customer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CustLevel" type="common:CustLevel" minOccurs="0"/>
+							<xs:element name="CustSegment" type="common:CustSegment" minOccurs="0"/>
+							<xs:element name="NoticeSuppress" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>reserved. 
+This parameter is reserved for  future use.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ChannelType" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>Notice channel type.
+"S": SMS notification.
+"M": EMAIL notification.	
+"V": IVR notification.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="NoticeType" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>Notice type.
+All the SMS/EMAIL/IVR messages are classified to different groups (notice type). Customer can chose to suppress messages by group.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="SubNoticeType" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Notice sub type.
+
+All the SMS/EMAIL/IVR messages in groups (notice type) are classified to different sub-groups (SubNoticeType). Customer can chose to suppress messages by sub-groups.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+							<xs:element name="Name" type="common:Name" minOccurs="0"/>
+							<xs:element name="Nationality" type="common:Nationality" nillable="true" minOccurs="0"/>
+							<xs:element name="Certificate" type="common:Certificate" nillable="true" minOccurs="0"/>
+							<xs:element name="Birthday" type="common:Date" minOccurs="0"/>
+							<xs:element name="Contact" type="common:Contact" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="Status" type="common:CustStatus" minOccurs="0"/>
+							<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreateCustRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeCustProfileReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="Customer">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CustId" type="common:CustId">
+								<xs:annotation>
+									<xs:documentation>The ID of the customer whom you want to change the information.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+							<xs:element name="Name" type="common:Name" minOccurs="0"/>
+							<xs:element name="Nationality" type="common:Nationality" nillable="true" minOccurs="0"/>
+							<xs:element name="Birthday" type="common:Date" minOccurs="0"/>
+							<xs:element name="Contact" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="common:Contact">
+											<xs:sequence>
+												<xs:element name="ActionType" type="common:ActionType"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="common:Address">
+											<xs:sequence>
+												<xs:element name="ActionType" type="common:ActionType"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeCustProfileRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeContactInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The "ObjectIdType" can be "1: Customer ID" </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Certificate" type="common:Certificate" nillable="true"/>
+					<xs:element name="Contact" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:Contact">
+									<xs:sequence>
+										<xs:element name="ActionType" type="common:ActionType">
+											<xs:annotation>
+												<xs:documentation>The action to the an entity.
+1:add.
+2:modify.
+3:delete.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeContactInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAddressInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+						<xs:annotation>
+							<xs:documentation>The "ObjectIdType" can be "1" or "2"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Address" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:Address">
+									<xs:sequence>
+										<xs:element name="ActionType" type="common:ActionType"/>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAddressInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryCustInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:choice>
+					<xs:element name="CustId" type="common:CustId">
+						<xs:annotation>
+							<xs:documentation>The customer that you want to change.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MSISDN" type="common:MSISDN">
+						<xs:annotation>
+							<xs:documentation>The Service Number of Subscriber.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:sequence>
+						<xs:element name="Nationality" type="common:Nationality" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>When the IdType is passport, need to pass this parameter.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Certificate" type="common:Certificate"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryCustInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="Customer" type="common:Customer" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

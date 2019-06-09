@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Transfer Balance-->
+	<xs:complexType name="TransferBalanceRequest">
+		<xs:sequence>
+			<xs:element name="TransferType" type="arcommon:string64">
+				<xs:annotation>
+					<xs:documentation>0:从其他系统转入CBS
+1:从CBS转出到其他系统
+2:CBS系统内部转帐（缺省）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TransferorObj" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="CustAccessCode" type="arcommon:CustAccessCode"/>
+						<xs:element name="SubGroupAccessCode" type="arcommon:SubGroupAccessCode"/>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransfereeObj" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="CustAccessCode" type="arcommon:CustAccessCode"/>
+						<xs:element name="SubGroupAccessCode" type="arcommon:SubGroupAccessCode"/>
+						<xs:element name="SubAccessCode" type="arcommon:SubAccessCode"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransferorAcct" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="arcommon:AcctAccessCode">
+							<xs:sequence>
+								<xs:element name="PayType" type="xs:string" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransfereeAcct" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="arcommon:AcctAccessCode">
+							<xs:sequence>
+								<xs:element name="PayType" type="xs:string" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SrcBalanceID" type="xs:long" minOccurs="0"/>
+			<xs:element name="SrcBalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="DestBalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="TransferAmount" type="xs:long" minOccurs="0"/>
+			<xs:element name="TransferHandleFee" type="xs:long" minOccurs="0"/>
+			<xs:element name="TransfeeHandleFee" type="xs:long" minOccurs="0"/>
+			<xs:element name="FreeUnitTransferorInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FreeUnitInstanceID" type="xs:long" minOccurs="0"/>
+						<xs:element name="FreeUnitType" type="xs:string" minOccurs="0"/>
+						<xs:element name="TransferAmt" type="xs:long"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreditTransferorInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CreditLimitType" type="xs:string" minOccurs="0"/>
+						<xs:element name="TransferAmt" type="xs:long"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Remark" type="xs:string" minOccurs="0"/>
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>It is reserved for future extension</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--xs:element name="SrcBalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="DestBalanceType" type="xs:string" minOccurs="0"/-->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransferBalanceResult">
+		<xs:sequence>
+			<xs:element name="Transferor" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BalanceChgInfo" type="arcommon:BalanceChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="HandlingChargeAmt" type="xs:long" minOccurs="0"/>
+						<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+						<xs:element name="LifeCycleChgInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OldLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="NewLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ChgValidity" type="xs:integer" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FreeUnitChgInfo" type="arcommon:FreeUnitChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="CreditChgInfo" type="arcommon:CreditChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Transferee" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BalanceChgInfo" type="arcommon:BalanceChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="HandlingChargeAmt" type="xs:long" minOccurs="0"/>
+						<xs:element name="CurrencyID" type="xs:integer" minOccurs="0"/>
+						<xs:element name="LoanChgInfo" type="arcommon:LoanChgInfo" minOccurs="0"/>
+						<xs:element name="LifeCycleChgInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OldLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="NewLifeCycleStatus" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StatusName" type="xs:string"/>
+												<xs:element name="StatusExpireTime" type="xs:string"/>
+												<xs:element name="StatusIndex" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ChgValidity" type="xs:integer"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FreeUnitChgInfo" type="arcommon:FreeUnitChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="CreditChgInfo" type="arcommon:CreditChgInfo" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

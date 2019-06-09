@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Balance Shift-->
+	<xs:complexType name="BalanceShiftRequest">
+		<xs:sequence>
+			<xs:element name="TransferorAcct">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="AccountCode" type="xs:string"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransfereeAcct">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="AccountCode" type="xs:string"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<!--xs:element name="SrcBalanceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="DestBalanceType" type="xs:string" minOccurs="0"/-->
+			<xs:element name="AdditionalProperty" type="arcommon:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BalanceShiftResult">
+		<xs:sequence>
+			<xs:element name="Transferor" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BalanceChgInfo" type="arcommon:BalanceChgInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Transferee" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BalanceChgInfo" type="arcommon:BalanceChgInfo" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

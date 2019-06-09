@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by f60017193 (EMBRACE) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.huawei.com/bss/soaif/interface/common/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/AccountService/" targetNamespace="http://www.huawei.com/bss/soaif/interface/AccountService/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.huawei.com/bss/soaif/interface/common/" schemaLocation="./HWBSS_CommonData_V10.xsd"/>
+	<xs:element name="CreateAcctReqMsg">
+		<xs:annotation>
+			<xs:documentation>Reserved interface.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="CustId" type="common:CustId">
+					<xs:annotation>
+						<xs:documentation>the customer ID that the account belong to.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Account">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctName" type="xs:string" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Reserved.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PaymentType" type="common:PaymentType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Payment type of an account.
+0:prepaid.
+1:postpaid.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+							<xs:element name="Name" type="common:Name" minOccurs="0"/>
+							<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+							<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Bill language.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Contact" type="common:Contact" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The contact information.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Address" type="common:Address" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="BillMedium" type="common:BillMedium" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Bill medium information.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Currency" type="common:Currency" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Reserved.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="InitialBalance" type="common:Amount" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Initial balance of an account.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CreditLimit" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>The credit limit of an account.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LimitType" type="xs:string"/>
+										<xs:element name="LimitValue" type="common:Amount"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Payment method of an account.
+1: manual payment.
+2: automatic payment.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PaymentChannel" type="common:PaymentChannel" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CreateAcctRspMsg">
+		<xs:annotation>
+			<xs:documentation>Reserved interface.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAcctInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="Account">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctId" type="common:AcctId"/>
+							<xs:element name="AcctName" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>This parameter is reserved.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="40"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="BillLanguage" type="common:Language" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Bill language.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Title" type="common:Title" nillable="true" minOccurs="0"/>
+							<xs:element name="Name" type="common:Name" minOccurs="0"/>
+							<xs:element name="Contact" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The contact information.
+This parameter is reserved.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="common:Contact">
+											<xs:sequence>
+												<xs:element name="ActionType" type="common:ActionType"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="common:Address">
+											<xs:sequence>
+												<xs:element name="ActionType" type="common:ActionType"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+							<xs:element name="AcctPayMethod" type="common:AcctPayMethod" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Account payment method.
+1: manual payment.
+2: auto pay.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PaymentChannel" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>the payment channel of account. only valid when AccPayMethod='2'.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="common:PaymentChannel">
+											<xs:sequence>
+												<xs:element name="ActionType" type="common:ActionType"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AdditionalProperty" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAcctInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeBillMediumReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:sequence>
+					<xs:element name="AcctId" type="common:AcctId">
+						<xs:annotation>
+							<xs:documentation>The account in which you want to change the bill medium.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BillMedium" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>1)when ActionType=1, BillMediumId is not necessary.
+2)when ActionType=2, all parameters are necessary.
+3)when ActionType=3, only BillMediumId is necessary.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="common:BillMedium">
+									<xs:sequence>
+										<xs:element name="ActionType" type="common:ActionType"/>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeBillMediumRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBillMediumReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access info can be "2 Account ID" or "4 Servcie number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBillMediumRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="BillMedium" type="common:BillMedium" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryAcctInfoReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access info can be "2 Account ID" or "4 Servcie number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryAcctInfoRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="Account" minOccurs="0" maxOccurs="2">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="common:Account">
+								<xs:sequence>
+									<xs:element name="CustId" type="common:CustId"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access info can be "2 Account ID" or "4 Servcie number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="Account" minOccurs="0" maxOccurs="2">
+					<xs:annotation>
+						<xs:documentation>If the subscriber is hybrid. Two account list will be return.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctId" type="common:AcctId"/>
+							<xs:element name="AcctBalance" type="common:AcctBalance" maxOccurs="unbounded"/>
+							<xs:element name="AcctCreditAmt" type="common:AcctCreditAmt" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="OutstandingAmt" type="common:OutstandingAmt" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceAndFreeUnitReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="AccessInfo" type="common:ObjectAccessInfo">
+					<xs:annotation>
+						<xs:documentation>The access info can be "3 Subscriber ID" or "4 Servcie number"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceAndFreeUnitRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+				<xs:element name="Account" minOccurs="0" maxOccurs="2">
+					<xs:annotation>
+						<xs:documentation>If the subscriber is hybrid. Two account list will be return.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctId" type="common:AcctId"/>
+							<xs:element name="AcctBalance" type="common:AcctBalance" maxOccurs="100"/>
+							<xs:element name="AcctCreditAmt" type="common:AcctCreditAmt" minOccurs="0" maxOccurs="100"/>
+							<xs:element name="OutstandingAmt" type="common:OutstandingAmt" minOccurs="0" maxOccurs="100"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FreeUnit" minOccurs="0" maxOccurs="100">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TypeId" type="common:ObjectId">
+								<xs:annotation>
+									<xs:documentation>The id of the free unit's type.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="TypeName">
+								<xs:annotation>
+									<xs:documentation>The name of the free unit's type.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MeasureUnit">
+								<xs:annotation>
+									<xs:documentation>The unit  that measure the free unit.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TotalAmt" type="common:Amount">
+								<xs:annotation>
+									<xs:documentation>Total amount of the free unit.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="UnusedAmt" type="common:Amount">
+								<xs:annotation>
+									<xs:documentation>Unused amount of the free unit.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Detail" maxOccurs="100">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="UnitId" type="common:ObjectId">
+											<xs:annotation>
+												<xs:documentation>The instance id of the free unit.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="InitialAmt" type="common:Amount">
+											<xs:annotation>
+												<xs:documentation>The initial total amout of the free unit.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="UnusedAmt" type="common:Amount">
+											<xs:annotation>
+												<xs:documentation>The unused amount of the free unit.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EffectiveDate" type="common:DateTime"/>
+										<xs:element name="ExpireDate" type="common:DateTime"/>
+										<xs:element name="Origin" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Indicate the origin of the free unit is from offering or global plan.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Type">
+														<xs:annotation>
+															<xs:documentation>The origin type.
+1: From offering
+2: From global plan</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="1"/>
+																<xs:enumeration value="2"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="OfferingId" type="common:OfferingId" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>When the origin type is 1, offeringId will be returned.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="IsRollOver">
+											<xs:annotation>
+												<xs:documentation>Whether can roll over to the next billing cycle.
+Y: yes;
+N: No.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Y"/>
+													<xs:enumeration value="N"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeBillCycleReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="Account">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctId" type="common:AcctId"/>
+							<xs:element name="AcctName" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>This parameter is reserved.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="40"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="BillCycleType" type="common:BillCycleType" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeBillCycleRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAccountCreditLimitReqMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:ReqHeader"/>
+				<xs:element name="Account">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AcctId" type="common:AcctId"/>
+							<xs:element name="AcctName" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>This parameter is reserved.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="40"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreditLimit" maxOccurs="100">
+								<xs:annotation>
+									<xs:documentation>The credit limit of an account.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LimitType">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LimitValue" type="common:Amount"/>
+										<xs:element name="EffectiveDate" type="common:DateTime"/>
+										<xs:element name="ExpireDate" type="common:DateTime"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ChangeAccountCreditLimitRspMsg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="common:RspHeader"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

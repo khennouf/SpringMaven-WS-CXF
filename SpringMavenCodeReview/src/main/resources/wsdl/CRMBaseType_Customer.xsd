@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by y00239272 (EMBRACE) -->
+<xs:schema xmlns="http://crm.huawei.com/basetype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://crm.huawei.com/basetype/" elementFormDefault="qualified">
+	<xs:include schemaLocation="CRMBaseType_Offering.xsd"/>
+	<xs:include schemaLocation="CRMBaseType_Contact.xsd"/>
+	<xs:include schemaLocation="CRMBaseType_Address.xsd"/>
+	<xs:complexType name="RegisterCustInfo">
+		<xs:sequence>
+			<xs:element name="CustInfo" type="CustInfo" minOccurs="0"/>
+			<xs:element name="ManagerList" type="ManagerList" minOccurs="0"/>
+			<xs:element name="AddressList" type="AddressList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The address information of the customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContactList" type="ContactList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The relation information of the customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerDocumentList" type="CustomerDocumentList" minOccurs="0"/>
+			<xs:element name="DNESettingList" type="DNESettingList" minOccurs="0"/>
+			<xs:element name="SupplementaryOfferingList" type="OfferingList" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustInfo">
+		<xs:sequence>
+			<xs:element name="CustBaseInfo" type="CustBaseInfo" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="IndividualInfo" type="IndividualInfo" minOccurs="0"/>
+				<xs:element name="CorpInfo" type="CorpInfo" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustBaseInfo">
+		<xs:all>
+			<xs:element name="CustomerCode" type="CustomerCode" minOccurs="0"/>
+			<xs:element name="CustomerType" type="CustomerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CustomerType
+T:inf_customer_all.cust_type
+0:Individual
+1:Corporation Customer
+2:Family Customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerId" type="CustomerId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CustomerId
+T:inf_customer_all.cust_id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ParentCustId" type="CustomerId" minOccurs="0"/>
+			<xs:element name="CustomerRelaId" type="RelationId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CustomerRelaId
+T:inf_customer_all.external_cust_id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerLevel" type="CustLevel" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Customer level(configurable)
+1 Standard
+2 VIP
+3 VVIP</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerSegment" type="CustomerSegment" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CustomerSegment
+T:inf_customer_all.cust_segment</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Language" type="Language" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Default Phonic Language Code of Customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WrittenLanguage" type="Language" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Default Written Language Code of Customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustClass" type="CustomerClass" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1: Formal Customer
+2: Test Customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Status" type="CustStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.Status
+T:inf_customer_all.cust_status
+A00 Prospect
+A01 Idle
+A02 Active
+A03 Deactive
+A04 Deleted</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PasswordInfo" type="PasswordInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.PasswordInfo.OldPassword</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="IndividualInfo">
+		<xs:all>
+			<xs:element name="CertificateType" type="CertificateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CertificateType
+T:inf_customer_all.id_type</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CertificateNumber" type="CertificateNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.CertificateNumber
+T:inf_customer_all.id_number
+ID, SSN</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Title" type="Title" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.Title
+T:inf_customer_all.cust_titl
+
+1:Mr.
+2:Mrs.
+3:Ms.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FirstName" type="FirstName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.FirstName
+T:inf_customer_all.name1</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MiddleName" type="MiddleName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.MiddleName
+T:inf_customer_all.name2</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastName" type="LastName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.LastName
+T:inf_customer_all.name3</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Nationality" type="Nationality" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>S:CustomerInfo.Nationality
+T:inf_customer_all.nation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Gender" type="Gender" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 Male
+2 Female</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="DateOfBirth" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Payment date Date format yyyyMMdd</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- add by xiechen 20140721 -->
+			<xs:element name="PlaceOfBirth" type="PlaceOfBirth" minOccurs="0"/>
+            <xs:element name="Occupation" type="Occupation" minOccurs="0"/>
+			<xs:element name="Religion" type="Religion" minOccurs="0"/>
+			<xs:element name="Income" type="Income" minOccurs="0"/>
+			<xs:element name="Education" type="Education" minOccurs="0"/>
+			<!-- add by xiechen 20140721 end-->
+			<xs:element name="Remark" type="Remark" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ref:inf_customer_all.remark</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DPAInfo" type="DPAInfo" minOccurs="0"/>
+			<xs:element name="FamilyMemberList" type="FamliyMemberList" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="CorpInfo">
+		<xs:all>
+			<xs:element name="CorpNo" type="CorporateNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Corporation Register Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDType" type="CertificateType" nillable="true" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It is identification type of a Org. For example: Business Register Number......</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDNumber" type="CertificateNumber" minOccurs="0"/>
+			<xs:element name="IDValidity" type="DateString" minOccurs="0"/>
+			<xs:element name="CustNo" type="CorporateNumber" minOccurs="0"/>
+			<xs:element name="CustType" type="CustomerType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>C:  Corporate
+S:  Subsidiary
+D:  Department</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustGrade" type="string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>M: Multinational
+N: Country
+A: Area
+C: City
+O: Other</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustName" type="CustomerName" minOccurs="0"/>
+			<xs:element name="CustShortName" type="CustomerShortName" minOccurs="0"/>
+			<xs:element name="CustSize" type="CorporateCustSizeLevel" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It is the size code of a organization.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Industry" type="Industry" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It is the industry code the organization belongs to.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubIndustry" type="SubIndustry" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It is the sub-industry code the organization belongs to.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustPhoneNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="ServiceNumber">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CustFaxNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="RelaFax">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CustEmail" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="RelaEmail">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CustWebSite" type="CustomerWebSite" minOccurs="0"/>
+			<xs:element name="RegisterDate" type="DateString" minOccurs="0"/>
+			<xs:element name="RegisterCapital" type="RegisterCapital" minOccurs="0"/>
+			<xs:element name="CorpCustOrg" type="CorpOrgList" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+			<xs:element name="Remark" type="Remark" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="ManagerList">
+		<xs:sequence>
+			<xs:element name="ManagerInfo" type="ManagerInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ManagerInfo">
+		<xs:sequence>
+			<xs:element name="ActionType" minOccurs="0">
+            <xs:simpleType>
+                <xs:annotation>
+                    <xs:documentation>1 Add
+2 Modify
+2 Delete</xs:documentation>
+                </xs:annotation>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+			</xs:element>
+			<xs:element name="CustManageSeq" type="xs:long" minOccurs="0"/>
+			<xs:element name="Role" type="ManagerServiceRole"/>
+			<xs:element name="OperId" type="OperId" minOccurs="0"/>
+			<xs:element name="ManagerName" type="ManagerName" minOccurs="0"/>
+			<xs:element name="DepartmentId" type="DepartmentId" minOccurs="0"/>
+			<xs:element name="MobilePhone" type="MobilePhone" minOccurs="0"/>
+			<xs:element name="HomePhone" type="HomePhone" minOccurs="0"/>
+			<xs:element name="OfficePhone" type="OfficePhone" minOccurs="0"/>
+			<xs:element name="Email" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="RelaEmail">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Status" type="CustStatus" minOccurs="0"/>
+			<xs:element name="Remark" type="Remark" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ModCustomerInfo">
+		<xs:sequence>
+			<xs:element name="CustomerType" type="CustomerType" minOccurs="0"/>
+			<xs:element name="CertificateType" type="CertificateType" minOccurs="0"/>
+			<xs:element name="CertificateNumber" type="CertificateNumber" minOccurs="0"/>
+			<xs:element name="Title" type="Title" minOccurs="0"/>
+			<xs:element name="Gender" type="Gender" minOccurs="0"/>
+			<xs:element name="FirstName" type="FirstName" minOccurs="0"/>
+			<xs:element name="MiddleName" type="MiddleName" minOccurs="0"/>
+			<xs:element name="LastName" type="LastName" minOccurs="0"/>
+			<xs:element name="Nationality" type="Nationality" minOccurs="0"/>
+			<xs:element name="Language" type="Language" minOccurs="0"/>
+			<xs:element name="CustLevel" type="CustLevel" minOccurs="0"/>
+			<xs:element name="AddressInfo" type="AddressInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CustContact" type="ContactInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CustStatus" type="CustStatus" minOccurs="0"/>
+			<xs:element name="DateOfBirth" type="DateOfBirth" minOccurs="0"/>
+			<xs:element name="CustomerDNE" type="DNESettingInfo" minOccurs="0"/>
+			<xs:element name="ExtCustParam" type="ExtParameterList" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ActualCustInfo">
+		<xs:sequence>
+			<xs:element name="CustInfo" type="CustInfo"/>
+			<xs:element name="AddressList" type="AddressList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The address information of the customer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by MESMERiZE (MiZE) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://www.huawei.com/bss/soaif/interface/CustomerService/" xmlns:ns1="http://www.huawei.com/bss/soaif/interface/common/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.huawei.com/bss/soaif/interface/CustomerService/">
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.huawei.com/bss/soaif/interface/CustomerService/" schemaLocation="HWBSS_Customer_V10.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="CreateCustomerRequestMessage">
+		<part name="CreateCustReqMsg" element="ns:CreateCustReqMsg"/>
+	</message>
+	<message name="CreateCustomerResponseMessage">
+		<part name="CreateCustRspMsg" element="ns:CreateCustRspMsg"/>
+	</message>
+	<message name="ChangeCustomerProfileRequestMessage">
+		<part name="ChangeCustProfileReqMsg" element="ns:ChangeCustProfileReqMsg"/>
+	</message>
+	<message name="ChangeCustomerProfileResponseMessage">
+		<part name="ChangeCustProfileRspMsg" element="ns:ChangeCustProfileRspMsg"/>
+	</message>
+	<message name="QueryCustomerInformationRequestMessage">
+		<part name="QueryCustInfoReqMsg" element="ns:QueryCustInfoReqMsg"/>
+	</message>
+	<message name="QueryCustomerInformationResponseMessage">
+		<part name="QueryCustInfoRspMsg" element="ns:QueryCustInfoRspMsg"/>
+	</message>
+	<message name="ChangeContactInformationRequestMessage">
+		<part name="ChangeContactInfoReqMsg" element="ns:ChangeContactInfoReqMsg"/>
+	</message>
+	<message name="ChangeContactInformationResponseMessage">
+		<part name="ChangeContactInfoRspMsg" element="ns:ChangeContactInfoRspMsg"/>
+	</message>
+	<message name="ChangeAddressInformationRequestMessage">
+		<part name="ChangeAddressInfoReqMsg" element="ns:ChangeAddressInfoReqMsg"/>
+	</message>
+	<message name="ChangeAddressInformationResponseMessage">
+		<part name="ChangeAddressInfoRspMsg" element="ns:ChangeAddressInfoRspMsg"/>
+	</message>
+	<portType name="CustomerInterfaces">
+		<operation name="CreateCustomer">
+			<input message="ns:CreateCustomerRequestMessage"/>
+			<output message="ns:CreateCustomerResponseMessage"/>
+		</operation>
+		<operation name="ChangeCustomerProfile">
+			<input message="ns:ChangeCustomerProfileRequestMessage"/>
+			<output message="ns:ChangeCustomerProfileResponseMessage"/>
+		</operation>
+		<operation name="QueryCustomerInformation">
+			<input message="ns:QueryCustomerInformationRequestMessage"/>
+			<output message="ns:QueryCustomerInformationResponseMessage"/>
+		</operation>
+		<operation name="ChangeContactInformation">
+			<input message="ns:ChangeContactInformationRequestMessage"/>
+			<output message="ns:ChangeContactInformationResponseMessage"/>
+		</operation>
+		<operation name="ChangeAddressInformation">
+			<input message="ns:ChangeAddressInformationRequestMessage"/>
+			<output message="ns:ChangeAddressInformationResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="CustomerBinding" type="ns:CustomerInterfaces">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="CreateCustomer">
+			<soap:operation soapAction="CreateCustomer" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeCustomerProfile">
+			<soap:operation soapAction="ChangeCustomerProfile" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryCustomerInformation">
+			<soap:operation soapAction="QueryCustomerInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeContactInformation">
+			<soap:operation soapAction="ChangeContactInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAddressInformation">
+			<soap:operation soapAction="ChangeAddressInformation" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="CustomerBindingSoap12" type="ns:CustomerInterfaces">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="CreateCustomer">
+			<soap12:operation soapAction="CreateCustomer" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeCustomerProfile">
+			<soap12:operation soapAction="ChangeCustomerProfile" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="QueryCustomerInformation">
+			<soap12:operation soapAction="QueryCustomerInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeContactInformation">
+			<soap12:operation soapAction="ChangeContactInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="ChangeAddressInformation">
+			<soap12:operation soapAction="ChangeAddressInformation" style="document"/>
+			<input>
+				<soap12:body use="literal"/>
+			</input>
+			<output>
+				<soap12:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="CustomerServices">
+		<port name="CustomerServicePort" binding="ns:CustomerBinding">
+			<soap:address location="http://10.70.211.75:7081/SELFCARE/HWBSS_Customer"/>
+		</port>
+		<port name="CustomerServicePortSoap12" binding="ns:CustomerBindingSoap12">
+			<soap12:address location="http://10.70.211.75:7081/SELFCARE/HWBSS_Customer"/>
+		</port>
+	</service>
+</definitions>

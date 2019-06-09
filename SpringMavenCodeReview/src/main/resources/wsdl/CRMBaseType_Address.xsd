@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by y00239272 (EMBRACE) -->
+<xs:schema xmlns="http://crm.huawei.com/basetype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://crm.huawei.com/basetype/" elementFormDefault="qualified">
+	<xs:include schemaLocation="CRMBaseType.xsd" />
+	<xs:complexType name="AddressList">
+		<xs:sequence>
+			<xs:element name="AddressInfo" type="AddressInfo" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AddressInfo">
+		<xs:all>
+			<xs:element name="AddressClass" type="AddressClass" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 Customer Address
+2 Account Address
+3 Subscriber Address</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContactSeq" type="AddressId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The parameter is provited by CRM</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AddressType" type="AddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>0:Legal;1:Office;2:Base;3:Home;4:Account;5:Emergency;6:Other</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActionType" type="ActionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>1 Add
+2 Modify
+3 Detele</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LocalId" type="LocalId" minOccurs="0"/>
+			<xs:element name="Address1" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address2" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address3" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address4" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address5" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address6" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address7" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address8" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address9" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address10" type="AddressName" minOccurs="0"/>
+			<xs:element name="Address11" type="AddressName" minOccurs="0"/>
+			<xs:element name="PostCode" type="PostCode" minOccurs="0"/>
+			<xs:element name="Telephone1" type="RelaTelephone" minOccurs="0"/>
+			<xs:element name="Telephone2" type="RelaTelephone" minOccurs="0"/>
+			<xs:element name="Telephone3" type="RelaTelephone" minOccurs="0"/>
+			<xs:element name="Telephone4" type="RelaTelephone" minOccurs="0"/>
+			<xs:element name="Email1" type="RelaEmail" minOccurs="0"/>
+			<xs:element name="Email2" type="RelaEmail" minOccurs="0"/>
+			<xs:element name="Email3" type="RelaEmail" minOccurs="0"/>
+			<xs:element name="Email4" type="RelaEmail" minOccurs="0"/>
+			<xs:element name="Fax1" type="RelaFax" minOccurs="0"/>
+			<xs:element name="Fax2" type="RelaFax" minOccurs="0"/>
+			<xs:element name="Fax3" type="RelaFax" minOccurs="0"/>
+			<xs:element name="Fax4" type="RelaFax" minOccurs="0"/>
+			<xs:element name="SmsNumber" type="SmsNumber" minOccurs="0"/>
+			<xs:element name="ExtParamList" type="ExtParameterList" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+</xs:schema>

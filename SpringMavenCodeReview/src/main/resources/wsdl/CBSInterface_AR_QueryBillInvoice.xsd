@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by Williams (501) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:arcommon="http://cbs.huawei.com/ar/wsservice/arcommon" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://cbs.huawei.com/ar/wsservice/arcommon" schemaLocation="CBSInterface_AR_Common.xsd"/>
+	<!--Query postpaid account information-->
+	<xs:complexType name="QueryBillInvoiceRequest">
+		<xs:sequence>
+			<xs:element name="AcctAccessCode">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="arcommon:AcctAccessCode">
+							<xs:sequence>
+								<xs:element name="PayType" type="arcommon:string64" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalRowNum" type="xs:integer"/>
+			<xs:element name="BeginRowNum" type="xs:integer"/>
+			<xs:element name="FetchRowNum" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QueryBillInvoiceResult">
+		<xs:sequence>
+			<xs:element name="BillInvoiceInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Invoiceno" type="xs:string"/>
+						<xs:element name="InvoiceAmt" type="xs:long"/>
+						<xs:element name="OpenAmt" type="xs:long"/>
+						<xs:element name="DueDate" type="xs:string"/>
+						<xs:element name="BillStartDate" type="xs:string"/>
+						<xs:element name="BillEndDate" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalRowNum" type="xs:integer"/>
+			<xs:element name="BeginRowNum" type="xs:integer"/>
+			<xs:element name="FetchRowNum" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
