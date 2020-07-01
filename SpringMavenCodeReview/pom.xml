@@ -26,7 +26,7 @@
 		<spring.version>4.1.4.RELEASE</spring.version>
 		<spring.data.version>1.4.1.RELEASE</spring.data.version>
 		<spring.security.version>3.2.0.RELEASE</spring.security.version>
-		<mysql.version>5.1.26</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 		<commons-dbcp.version>1.2.2</commons-dbcp.version>
 		<hibernate.version>4.2.6.Final</hibernate.version>
 		<logback.version>1.0.13</logback.version>
