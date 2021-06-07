@@ -29,7 +29,7 @@
 		<mysql.version>5.1.26</mysql.version>
 		<commons-dbcp.version>1.2.2</commons-dbcp.version>
 		<hibernate.version>4.2.6.Final</hibernate.version>
-		<logback.version>1.0.13</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<cxf.version>3.0.2</cxf.version>
